@@ -183,6 +183,15 @@ const StyledButton = styled(MuiButton, {
  *   Label row hidden via opacity. Spinner centered absolutely.
  *   Spinner size aligned to canonical icon scale per button size.
  *
+ * Color coverage:
+ *   contained  — all 7 colors (primary, secondary, error, warning, info, success, neutral)
+ *   outlined   — primary, error, neutral only
+ *   text       — primary, error, neutral only
+ *   soft       — primary, error, neutral only
+ *   Unsupported color+variant combos fall back to color="primary" and emit a
+ *   dev-mode console.warn. Full 7-color coverage for outlined/text/soft is tracked
+ *   in the hardening backlog.
+ *
  * Spec: docs/specs/components/button.md
  * Sizing: docs/decisions/005-sizing-scale.md — Category 1
  */
@@ -207,12 +216,25 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) {
-    // Fallback to 'primary' for colors not yet fully tokenised
+    // Fallback to 'primary' for colors not yet fully tokenised.
+    // outlined/text/soft only have tokens for primary, error, neutral.
+    // contained has full 7-color coverage and is unaffected.
     const resolvedColor: EpColor =
       (variant === 'outlined' || variant === 'text' || variant === 'soft') &&
       (color === 'secondary' || color === 'info' || color === 'warning' || color === 'success')
         ? 'primary'
         : color;
+
+    // Dev warning — silent color fallback.
+    // Fires when a consumer passes a color that has no tokens for the chosen variant,
+    // so they can see the mismatch immediately rather than debugging a visual regression.
+    if (process.env.NODE_ENV !== 'production' && resolvedColor !== color) {
+      console.warn(
+        `[EP Button] color="${color}" is not yet tokenised for variant="${variant}". ` +
+        `Falling back to color="primary". ` +
+        `Supported colors for ${variant}: primary, error, neutral.`
+      );
+    }
 
     const isDisabled = disabled || loading;
 
