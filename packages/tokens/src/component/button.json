@@ -131,9 +131,8 @@
       },
 
       "disabled": {
-        "background": { "$type": "color",  "$value": "{semantic.color.action.disabled}" },
-        "text":       { "$type": "color",  "$value": "{semantic.color.text.disabled}" },
-        "opacity":    { "$type": "number", "$value": "0.5" }
+        "background": { "$type": "color", "$value": "{semantic.color.action.disabled}" },
+        "text":       { "$type": "color", "$value": "{semantic.color.text.disabled}" }
       },
 
       "focusRing": {

@@ -25,12 +25,11 @@ const TOKEN = {
   border:   (v: ButtonVariant, c: EpColor) => `var(--ep-component-button-${v}-${c}-border)`,
   // Shared
   radius:          () => `var(--ep-component-button-border-radius)`,
-  focusColor:      () => `var(--ep-component-button-focus-ring-color)`,
-  focusWidth:      () => `var(--ep-component-button-focus-ring-width)`,
-  focusOffset:     () => `var(--ep-component-button-focus-ring-offset)`,
-  disabledBg:      () => `var(--ep-component-button-disabled-background)`,
-  disabledText:    () => `var(--ep-component-button-disabled-text)`,
-  disabledOpacity: () => `var(--ep-component-button-disabled-opacity)`,
+  focusColor:  () => `var(--ep-component-button-focus-ring-color)`,
+  focusWidth:  () => `var(--ep-component-button-focus-ring-width)`,
+  focusOffset: () => `var(--ep-component-button-focus-ring-offset)`,
+  disabledBg:  () => `var(--ep-component-button-disabled-background)`,
+  disabledText:() => `var(--ep-component-button-disabled-text)`,
 } as const;
 
 // ── Spinner size — matches the semantic icon scale per button size ──────────
@@ -99,10 +98,10 @@ const StyledButton = styled(MuiButton, {
     borderColor:     'transparent',
     cursor:          epLoading ? 'wait' : 'not-allowed',
     pointerEvents:   epLoading ? 'none' : 'auto',
-    // Opacity only for true-disabled; loading must not dim the spinner.
-    opacity: (!epLoading && (epVariant === 'outlined' || epVariant === 'text'))
-      ? TOKEN.disabledOpacity()
-      : undefined,
+    // Reset opacity explicitly — MUI applies its own disabled opacity on
+    // ButtonBase. EP disabled appearance is communicated via token colors only,
+    // never via opacity. Avoids double-attenuation on outlined/text variants.
+    opacity:         1,
   },
 
   // ── Label row (ep-button-label) ────────────────────────────────────────
@@ -190,12 +189,12 @@ const StyledButton = styled(MuiButton, {
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(
     {
-      variant   = 'contained',
-      size      = 'md',
-      color     = 'primary',
-      loading   = false,
-      disabled  = false,
-      fullWidth = false,
+      variant    = 'contained',
+      size       = 'md',
+      color      = 'primary',
+      loading    = false,
+      disabled   = false,
+      fullWidth  = false,
       startSlot,
       endSlot,
       href,
@@ -204,6 +203,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       sx,
       children,
+      'aria-label': ariaLabel,
     },
     ref
   ) {
@@ -234,7 +234,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled}
         aria-disabled={loading ? true : undefined}
         aria-busy={loading ? true : undefined}
-        aria-label={undefined}
+        aria-label={ariaLabel}
         href={href}
         onClick={isDisabled ? undefined : onClick}
         className={className}
