@@ -58,9 +58,12 @@ const StyledCheckbox = styled(MuiCheckbox, {
   },
 
   // Disabled unchecked
+  // opacity: 1 cancels MUI ButtonBase's 0.38 disabled opacity — disabled
+  // appearance is communicated entirely via token colors (same pattern as Switch).
   '&.Mui-disabled': {
-    color: TOKEN.disabledBorder(),
-    cursor: 'not-allowed',
+    color:         TOKEN.disabledBorder(),
+    opacity:       1,
+    cursor:        'not-allowed',
     pointerEvents: 'auto',
   },
   // Disabled checked / indeterminate

@@ -1,6 +1,8 @@
 {
   "component": {
     "breadcrumbs": {
+      "fontFamily": { "$type": "fontFamily", "$value": "{semantic.typography.fontFamily}" },
+
       "item": {
         "color":        { "$type": "color", "$value": "{semantic.color.text.secondary}" },
         "colorActive":  { "$type": "color", "$value": "{semantic.color.text.primary}" },

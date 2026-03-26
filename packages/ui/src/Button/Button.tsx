@@ -25,12 +25,11 @@ const TOKEN = {
   border:   (v: ButtonVariant, c: EpColor) => `var(--ep-component-button-${v}-${c}-border)`,
   // Shared
   radius:          () => `var(--ep-component-button-border-radius)`,
-  focusColor:      () => `var(--ep-component-button-focus-ring-color)`,
-  focusWidth:      () => `var(--ep-component-button-focus-ring-width)`,
-  focusOffset:     () => `var(--ep-component-button-focus-ring-offset)`,
-  disabledBg:      () => `var(--ep-component-button-disabled-background)`,
-  disabledText:    () => `var(--ep-component-button-disabled-text)`,
-  disabledOpacity: () => `var(--ep-component-button-disabled-opacity)`,
+  focusColor:  () => `var(--ep-component-button-focus-ring-color)`,
+  focusWidth:  () => `var(--ep-component-button-focus-ring-width)`,
+  focusOffset: () => `var(--ep-component-button-focus-ring-offset)`,
+  disabledBg:  () => `var(--ep-component-button-disabled-background)`,
+  disabledText:() => `var(--ep-component-button-disabled-text)`,
 } as const;
 
 // ── Spinner size — matches the semantic icon scale per button size ──────────
@@ -99,10 +98,10 @@ const StyledButton = styled(MuiButton, {
     borderColor:     'transparent',
     cursor:          epLoading ? 'wait' : 'not-allowed',
     pointerEvents:   epLoading ? 'none' : 'auto',
-    // Opacity only for true-disabled; loading must not dim the spinner.
-    opacity: (!epLoading && (epVariant === 'outlined' || epVariant === 'text'))
-      ? TOKEN.disabledOpacity()
-      : undefined,
+    // Reset opacity explicitly — MUI applies its own disabled opacity on
+    // ButtonBase. EP disabled appearance is communicated via token colors only,
+    // never via opacity. Avoids double-attenuation on outlined/text variants.
+    opacity:         1,
   },
 
   // ── Label row (ep-button-label) ────────────────────────────────────────
@@ -184,18 +183,27 @@ const StyledButton = styled(MuiButton, {
  *   Label row hidden via opacity. Spinner centered absolutely.
  *   Spinner size aligned to canonical icon scale per button size.
  *
+ * Color coverage:
+ *   contained  — all 7 colors (primary, secondary, error, warning, info, success, neutral)
+ *   outlined   — primary, error, neutral only
+ *   text       — primary, error, neutral only
+ *   soft       — primary, error, neutral only
+ *   Unsupported color+variant combos fall back to color="primary" and emit a
+ *   dev-mode console.warn. Full 7-color coverage for outlined/text/soft is tracked
+ *   in the hardening backlog.
+ *
  * Spec: docs/specs/components/button.md
  * Sizing: docs/decisions/005-sizing-scale.md — Category 1
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   function Button(
     {
-      variant   = 'contained',
-      size      = 'md',
-      color     = 'primary',
-      loading   = false,
-      disabled  = false,
-      fullWidth = false,
+      variant    = 'contained',
+      size       = 'md',
+      color      = 'primary',
+      loading    = false,
+      disabled   = false,
+      fullWidth  = false,
       startSlot,
       endSlot,
       href,
@@ -204,15 +212,29 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       sx,
       children,
+      'aria-label': ariaLabel,
     },
     ref
   ) {
-    // Fallback to 'primary' for colors not yet fully tokenised
+    // Fallback to 'primary' for colors not yet fully tokenised.
+    // outlined/text/soft only have tokens for primary, error, neutral.
+    // contained has full 7-color coverage and is unaffected.
     const resolvedColor: EpColor =
       (variant === 'outlined' || variant === 'text' || variant === 'soft') &&
       (color === 'secondary' || color === 'info' || color === 'warning' || color === 'success')
         ? 'primary'
         : color;
+
+    // Dev warning — silent color fallback.
+    // Fires when a consumer passes a color that has no tokens for the chosen variant,
+    // so they can see the mismatch immediately rather than debugging a visual regression.
+    if (process.env.NODE_ENV !== 'production' && resolvedColor !== color) {
+      console.warn(
+        `[EP Button] color="${color}" is not yet tokenised for variant="${variant}". ` +
+        `Falling back to color="primary". ` +
+        `Supported colors for ${variant}: primary, error, neutral.`
+      );
+    }
 
     const isDisabled = disabled || loading;
 
@@ -234,7 +256,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled}
         aria-disabled={loading ? true : undefined}
         aria-busy={loading ? true : undefined}
-        aria-label={undefined}
+        aria-label={ariaLabel}
         href={href}
         onClick={isDisabled ? undefined : onClick}
         className={className}

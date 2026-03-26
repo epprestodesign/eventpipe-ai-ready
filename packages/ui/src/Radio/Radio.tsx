@@ -54,9 +54,12 @@ const StyledRadio = styled(MuiRadio, {
     borderRadius:  '50%',  // matches Radio's circular shape
   },
 
+  // opacity: 1 cancels MUI ButtonBase's 0.38 disabled opacity — disabled
+  // appearance is communicated entirely via token colors (same pattern as Switch/Checkbox).
   '&.Mui-disabled': {
-    color: TOKEN.disabledBorder(),
-    cursor: 'not-allowed',
+    color:         TOKEN.disabledBorder(),
+    opacity:       1,
+    cursor:        'not-allowed',
     pointerEvents: 'auto',
   },
   '&.Mui-disabled.Mui-checked': {

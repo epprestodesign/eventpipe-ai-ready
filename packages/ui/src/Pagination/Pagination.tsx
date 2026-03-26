@@ -8,6 +8,7 @@ import type { EpSize3 } from '../types/shared';
 // All values pulled exclusively from --ep-component-pagination-* custom properties.
 
 const TOKEN = {
+  fontFamily:       ()          => `var(--ep-component-pagination-font-family)`,
   gap:              ()          => `var(--ep-component-pagination-gap)`,
   borderRadius:     (s: string) => `var(--ep-component-pagination-item-border-radius-${s})`,
   width:            (s: EpSize3)=> `var(--ep-component-pagination-item-size-${s}-width)`,
@@ -55,6 +56,8 @@ const StyledPagination = styled(MuiPagination, {
 
   // ── All items (page numbers, prev/next, ellipsis) ─────────────────────
   '& .MuiPaginationItem-root': {
+    // fontFamily: explicitly set — MUI theme Roboto bleeds through without this.
+    fontFamily:      TOKEN.fontFamily(),
     color:           TOKEN.color(),
     backgroundColor: TOKEN.bg(),
     // Shape — circular by default; .MuiPaginationItem-rounded overrides below

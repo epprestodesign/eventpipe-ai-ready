@@ -18,6 +18,8 @@ import { useBaseInput, normalizeMultipleValue, SPINNER_SIZE } from '../BaseInput
 // No raw hex, no hardcoded px values, no semantic/primitive tokens consumed directly.
 
 const TOKEN = {
+  // Typography
+  fontFamily:           () => `var(--ep-component-select-font-family)`,
   // Structure
   radius:               () => `var(--ep-component-select-border-radius)`,
   // Border
@@ -105,6 +107,8 @@ const StyledFormControl = styled(FormControl, {
 
   // ─── Outlined input ──────────────────────────────────────────────────
   '& .MuiOutlinedInput-root': {
+    // fontFamily: explicitly set — MUI theme Roboto bleeds through without this.
+    fontFamily:      TOKEN.fontFamily(),
     backgroundColor: TOKEN.bgOutlined(),
     borderRadius:    TOKEN.radius(),
     fontSize:        TOKEN.inputFontSize(epSize),
@@ -169,6 +173,7 @@ const StyledFormControl = styled(FormControl, {
   // ─── Filled input ────────────────────────────────────────────────────
   ...(epVariant === 'filled' && {
     '& .MuiFilledInput-root': {
+      fontFamily:                  TOKEN.fontFamily(),
       backgroundColor:             TOKEN.bgFilled(),
       borderRadius:                `${TOKEN.radius()} ${TOKEN.radius()} 0 0`,
       fontSize:                    TOKEN.inputFontSize(epSize),
@@ -228,8 +233,9 @@ const StyledFormControl = styled(FormControl, {
 
   // ─── Label ───────────────────────────────────────────────────────────
   '& .MuiInputLabel-root': {
-    color:    TOKEN.labelColor(),
-    fontSize: TOKEN.labelFontSize(epSize),
+    fontFamily: TOKEN.fontFamily(),
+    color:      TOKEN.labelColor(),
+    fontSize:   TOKEN.labelFontSize(epSize),
 
     // Override resting (non-floating) position — MUI owns the shrink transform
     '&:not(.MuiInputLabel-shrink)': {
@@ -250,6 +256,7 @@ const StyledFormControl = styled(FormControl, {
 
   // ─── Helper text ─────────────────────────────────────────────────────
   '& .MuiFormHelperText-root': {
+    fontFamily:  TOKEN.fontFamily(),
     color:       TOKEN.helperColor(),
     fontSize:    TOKEN.helperFontSize(),
     marginLeft:  0,
@@ -426,6 +433,7 @@ export const Select = forwardRef<HTMLDivElement, SelectProps>(
       backgroundColor: TOKEN.menuBg(),
       borderRadius:    TOKEN.menuRadius(),
       '& .MuiMenuItem-root': {
+        fontFamily:    TOKEN.fontFamily(),
         color:        TOKEN.menuItemColor(),
         background:   TOKEN.menuItemBg(),
         fontSize:     TOKEN.menuItemFontSize(size),

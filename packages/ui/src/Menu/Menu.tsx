@@ -9,6 +9,8 @@ import type { MenuProps, MenuItemProps, MenuDividerProps } from './Menu.types';
 // All values pulled exclusively from --ep-component-menu-* custom properties.
 
 const TOKEN = {
+  // Typography
+  fontFamily:   () => `var(--ep-component-menu-font-family)`,
   // Paper surface (applied via PaperProps.sx — portal-safe)
   background:   () => `var(--ep-component-menu-background)`,
   borderRadius: () => `var(--ep-component-menu-border-radius)`,
@@ -57,6 +59,8 @@ const PAPER_SX = {
 
 const StyledMenuItem = styled(MuiMenuItem)(() => ({
   // Base item
+  // fontFamily: explicitly set — MUI theme Roboto bleeds through without this.
+  fontFamily: TOKEN.fontFamily(),
   color:      TOKEN.itemColor(),
   background: TOKEN.itemBg(),
   fontSize:   TOKEN.itemFontSize(),

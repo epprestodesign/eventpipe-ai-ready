@@ -232,6 +232,12 @@ const StyledTextField = styled(MuiTextField, {
  * Approved deviation from standard focusRing token pattern — see deviations register.
  * WCAG 2.1 AA met via non-color change (border width) + contrast ratio.
  *
+ * Loading + endAdornment:
+ *   When `loading` is true the loading spinner occupies the end adornment slot.
+ *   Any `endAdornment` passed at the same time is silently dropped — the spinner
+ *   takes priority so the field communicates its async state unambiguously.
+ *   A dev-mode warning is emitted when this conflict occurs so it is caught early.
+ *
  * Shared logic (ID generation, aria-busy, aria-describedby, aria-invalid)
  * delegated to useBaseInput — see packages/ui/src/BaseInput/useBaseInput.ts.
  *
@@ -279,6 +285,17 @@ export const TextField = forwardRef<HTMLDivElement, TextFieldProps>(
       loading,
       disabled,
     });
+
+    // Dev warning: endAdornment is silently dropped when loading=true.
+    // Emitted at render time (not in an effect) — render warnings are standard
+    // React practice for prop-conflict diagnostics (see MUI, Radix, react-hook-form).
+    if (process.env.NODE_ENV !== 'production' && loading && endAdornment) {
+      console.warn(
+        '[EP TextField] `endAdornment` is ignored when `loading` is true. ' +
+        'The loading spinner occupies the end slot. Remove `endAdornment` while loading, ' +
+        'or use `InputProps.endAdornment` directly if you need to override this behaviour.'
+      );
+    }
 
     // Loading spinner replaces endAdornment
     const endSlot = loading ? (

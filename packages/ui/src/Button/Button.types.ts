@@ -42,6 +42,13 @@ export interface ButtonProps {
   // ── Events ────────────────────────────────────────────────────────────────
   onClick?: MouseEventHandler<HTMLButtonElement>;
 
+  // ── Accessibility ─────────────────────────────────────────────────────────
+  /**
+   * Accessible label for icon-only buttons (no visible text children).
+   * Required when `children` is purely decorative (e.g. an icon slot with no label text).
+   */
+  'aria-label'?: string;
+
   // ── Escape hatches ────────────────────────────────────────────────────────
   className?: string;
   sx?: SxProps<Theme>;

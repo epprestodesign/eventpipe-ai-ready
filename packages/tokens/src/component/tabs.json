@@ -6,6 +6,8 @@
         "width": { "$type": "dimension", "$value": "1px" }
       },
 
+      "fontFamily": { "$type": "fontFamily", "$value": "{semantic.typography.fontFamily}" },
+
       "tab": {
         "color":         { "$type": "color", "$value": "{semantic.color.text.secondary}" },
         "colorActive":   { "$type": "color", "$value": "{semantic.color.brand.primary}" },

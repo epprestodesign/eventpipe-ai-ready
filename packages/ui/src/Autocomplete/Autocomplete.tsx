@@ -18,6 +18,8 @@ import { Icon } from '../Icon';
 // All values pulled exclusively from --ep-component-autocomplete-* custom properties.
 
 const TOKEN = {
+  // Typography
+  fontFamily:             () => `var(--ep-component-autocomplete-font-family)`,
   // Dropdown surface (portal — resolved from :root)
   dropdownBg:             () => `var(--ep-component-autocomplete-dropdown-background)`,
   dropdownRadius:         () => `var(--ep-component-autocomplete-dropdown-border-radius)`,
@@ -55,9 +57,11 @@ const PAPER_SX = {
   boxShadow:       TOKEN.dropdownShadow(),
 
   '& .MuiAutocomplete-listbox': {
-    maxHeight: TOKEN.dropdownMaxHeight(),
-    padding:   0,
-    overflow:  'auto',
+    // fontFamily: explicitly set — MUI theme Roboto bleeds through without this.
+    fontFamily: TOKEN.fontFamily(),
+    maxHeight:  TOKEN.dropdownMaxHeight(),
+    padding:    0,
+    overflow:   'auto',
   },
 
   // backgroundFocus pattern — list-like items use background change, not outline ring
@@ -133,7 +137,9 @@ const StyledAutocomplete = styled(MuiAutocomplete as any)({
   // Outer padding is reset to zero; inner spacing lives entirely on .MuiAutocomplete-input
   // via TextField.tsx, matching the stabilised TextField/Select geometry contract.
   '&.MuiAutocomplete-root .MuiOutlinedInput-root': {
-    padding: 0,
+    // fontFamily: explicitly set — MUI theme Roboto bleeds through without this.
+    fontFamily: TOKEN.fontFamily(),
+    padding:    0,
   },
 });
 

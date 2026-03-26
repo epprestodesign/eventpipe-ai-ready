@@ -13,6 +13,8 @@
         ]
       },
 
+      "fontFamily": { "$type": "fontFamily", "$value": "{semantic.typography.fontFamily}" },
+
       "item": {
         "color":                   { "$type": "color", "$value": "{semantic.color.text.primary}" },
         "colorDisabled":           { "$type": "color", "$value": "{semantic.color.text.disabled}" },

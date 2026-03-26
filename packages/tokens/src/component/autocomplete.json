@@ -1,6 +1,8 @@
 {
   "component": {
     "autocomplete": {
+      "fontFamily": { "$type": "fontFamily", "$value": "{semantic.typography.fontFamily}" },
+
       "dropdown": {
         "background":   { "$type": "color",     "$value": "{semantic.color.background.paper}" },
         "borderRadius": { "$type": "dimension",  "$value": "{semantic.radius.lg}" },

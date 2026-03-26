@@ -10,6 +10,7 @@ import type { BreadcrumbsProps, BreadcrumbItemProps, BreadcrumbLinkProps } from 
 // All values pulled exclusively from --ep-component-breadcrumbs-* custom properties.
 
 const TOKEN = {
+  fontFamily:      () => `var(--ep-component-breadcrumbs-font-family)`,
   itemColor:       () => `var(--ep-component-breadcrumbs-item-color)`,
   itemColorActive: () => `var(--ep-component-breadcrumbs-item-color-active)`,
   itemColorHover:  () => `var(--ep-component-breadcrumbs-item-color-hover)`,
@@ -33,7 +34,8 @@ const DEFAULT_SEPARATOR = (
 // ─── Styled MuiBreadcrumbs ─────────────────────────────────────────────────
 
 const StyledBreadcrumbs = styled(MuiBreadcrumbs)({
-  fontSize: TOKEN.itemFontSize(),
+  fontFamily: TOKEN.fontFamily(),
+  fontSize:   TOKEN.itemFontSize(),
 
   // Separator spacing — MUI wraps separator in .MuiBreadcrumbs-separator
   '& .MuiBreadcrumbs-separator': {
@@ -51,6 +53,7 @@ const StyledBreadcrumbs = styled(MuiBreadcrumbs)({
 // ─── Styled BreadcrumbLink ─────────────────────────────────────────────────
 
 const StyledLink = styled(MuiLink)({
+  fontFamily:     TOKEN.fontFamily(),
   color:          TOKEN.itemColor(),
   fontSize:       TOKEN.itemFontSize(),
   textDecoration: 'none',
