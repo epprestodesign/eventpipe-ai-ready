@@ -8,6 +8,7 @@ import type { TabsProps, TabProps, TabPanelProps } from './Tabs.types';
 // All values pulled exclusively from --ep-component-tabs-* custom properties.
 
 const TOKEN = {
+  fontFamily:          () => `var(--ep-component-tabs-font-family)`,
   borderBottomColor:   () => `var(--ep-component-tabs-border-bottom-color)`,
   borderBottomWidth:   () => `var(--ep-component-tabs-border-bottom-width)`,
 
@@ -53,6 +54,9 @@ const StyledTabs = styled(MuiTabs)({
 
 const StyledTab = styled(MuiTab)({
   // Base text
+  // fontFamily: explicitly set via token — MUI's theme sets Roboto which bleeds
+  // through even after 'inherit' if no ancestor provides the EP font stack.
+  fontFamily:  TOKEN.fontFamily(),
   color:       TOKEN.tabColor(),
   fontSize:    TOKEN.tabFontSize(),
   fontWeight:  TOKEN.tabFontWeight(),
