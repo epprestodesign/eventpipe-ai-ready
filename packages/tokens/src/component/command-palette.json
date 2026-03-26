@@ -1,6 +1,7 @@
 {
   "component": {
     "command-palette": {
+      "fontFamily": { "$type": "fontFamily", "$value": "{semantic.typography.fontFamily}" },
 
       "overlay": {
         "background":   { "$type": "color",     "$value": "{semantic.color.background.paper}" },

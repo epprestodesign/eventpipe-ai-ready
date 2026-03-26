@@ -19,6 +19,8 @@ import { Icon } from '../Icon';
 // Active/selected item background reuses the List token namespace (--ep-component-list-item-*).
 
 const TOKEN = {
+  // Typography
+  fontFamily:       () => `var(--ep-component-command-palette-font-family)`,
   // Overlay
   overlayBg:        () => `var(--ep-component-command-palette-overlay-background)`,
   overlayRadius:    () => `var(--ep-component-command-palette-overlay-border-radius)`,
@@ -421,8 +423,10 @@ export const CommandPalette = forwardRef<HTMLDivElement, CommandPaletteProps>(
                                       style={{
                                         fontSize:   TOKEN.itemShortcutSz(),
                                         color:      TOKEN.itemShortcutClr(),
-                                        // Framework reset — <kbd> has browser default styles
-                                        fontFamily: 'inherit',
+                                        // Framework reset — <kbd> uses monospace by default;
+                                        // TOKEN.fontFamily() ensures Inter renders here
+                                        // instead of the browser's monospace fallback.
+                                        fontFamily: TOKEN.fontFamily(),
                                         background: 'none',
                                         border:     'none',
                                         padding:    0,
