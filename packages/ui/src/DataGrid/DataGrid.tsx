@@ -262,7 +262,11 @@ export function DataGrid<T = Record<string, unknown>>({
     >
       {/* ── FilterBar slot ─────────────────────────────────────────────────── */}
       {filterBar && (
-        <Box style={{ borderBottom: `1px solid ${TOKEN.containerBorder()}` }}>
+        <Box style={{
+          borderBottom: `1px solid ${TOKEN.containerBorder()}`,
+          paddingLeft:  TOKEN.footerPx(),
+          paddingRight: TOKEN.footerPx(),
+        }}>
           {filterBar}
         </Box>
       )}

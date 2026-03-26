@@ -75,7 +75,7 @@
         "selectedBackground": { "$type": "color", "$value": "{semantic.color.brand.primaryLight}" },
         "padding": {
           "y": { "$type": "dimension", "$value": "8px" },
-          "x": { "$type": "dimension", "$value": "0px" }
+          "x": { "$type": "dimension", "$value": "16px" }
         }
       },
 
