@@ -33,7 +33,7 @@
       },
 
       "disabled": {
-        "color": { "$type": "color", "$value": "{semantic.color.action.disabled}" }
+        "color": { "$type": "color", "$value": "{semantic.color.text.disabled}" }
       },
 
       "valueLabel": {

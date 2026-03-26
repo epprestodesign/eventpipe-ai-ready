@@ -146,7 +146,7 @@ export const FilterBar = forwardRef<HTMLDivElement, FilterBarProps>(
                   placeholder={searchPlaceholder}
                   startAdornment={
                     <span aria-hidden="true" style={{ display: 'flex', color: 'inherit' }}>
-                      <Icon name="search" size="sm" />
+                      <Icon name="search" size="md" />
                     </span>
                   }
                 />

@@ -103,7 +103,10 @@ const StyledSlider = styled(MuiSlider, {
   },
 
   // ─── Disabled ────────────────────────────────────────────────────────
+  // opacity: 1 cancels MUI's 0.38 disabled opacity — disabled appearance is
+  // communicated entirely via token colors (same pattern as Checkbox/Radio/Switch).
   '&.Mui-disabled': {
+    opacity: 1,
     '& .MuiSlider-track': {
       backgroundColor: TOKEN.disabledColor(),
     },
