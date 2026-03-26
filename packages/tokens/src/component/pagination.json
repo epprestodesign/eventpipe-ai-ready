@@ -1,7 +1,8 @@
 {
   "component": {
     "pagination": {
-      "gap": { "$type": "dimension", "$value": "4px" },
+      "gap":        { "$type": "dimension",  "$value": "4px" },
+      "fontFamily": { "$type": "fontFamily", "$value": "{semantic.typography.fontFamily}" },
 
       "item": {
         "borderRadius": {

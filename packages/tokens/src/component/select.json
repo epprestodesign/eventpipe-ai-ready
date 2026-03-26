@@ -2,6 +2,7 @@
   "component": {
     "select": {
       "borderRadius": { "$type": "dimension", "$value": "{semantic.radius.sm}" },
+      "fontFamily":   { "$type": "fontFamily", "$value": "{semantic.typography.fontFamily}" },
 
       "border": {
         "width":      { "$type": "dimension", "$value": "1px" },
