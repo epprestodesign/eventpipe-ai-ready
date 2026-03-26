@@ -1,0 +1,19 @@
+{
+  "semantic": {
+    "spacing": {
+      "stack": {
+        "xs": { "$type": "dimension", "$value": "{primitive.spacing.2}" },
+        "sm": { "$type": "dimension", "$value": "{primitive.spacing.3}" },
+        "md": { "$type": "dimension", "$value": "{primitive.spacing.4}" },
+        "lg": { "$type": "dimension", "$value": "{primitive.spacing.6}" },
+        "xl": { "$type": "dimension", "$value": "{primitive.spacing.10}" }
+      },
+      "inline": {
+        "xs": { "$type": "dimension", "$value": "{primitive.spacing.1}" },
+        "sm": { "$type": "dimension", "$value": "{primitive.spacing.2}" },
+        "md": { "$type": "dimension", "$value": "{primitive.spacing.3}" },
+        "lg": { "$type": "dimension", "$value": "{primitive.spacing.4}" }
+      }
+    }
+  }
+}

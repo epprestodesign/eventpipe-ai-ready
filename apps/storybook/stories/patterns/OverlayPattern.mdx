@@ -1,0 +1,109 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Patterns/Overlay pattern" />
+
+<div style={{ maxWidth: 760, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Overlay pattern
+
+Canonical rules for components that render in a MUI Portal above page content. Applies to Dialog, Drawer, Popover, Menu, Snackbar, Backdrop, and Tooltip.
+
+> Full contract: `docs/contracts/overlay-pattern.md` in the repository.
+
+---
+
+## The PAPER_SX problem
+
+`styled()` ancestor CSS selectors **do not reach portal content**. When a component renders its Paper surface in a Portal, the styled root element is not an ancestor of the paper element in the DOM.
+
+CSS custom properties defined on `:root` **are accessible everywhere**, including inside portals, because they propagate through the global cascade rather than the DOM tree.
+
+---
+
+## Solution: PAPER_SX pattern
+
+For every component whose Paper surface renders in a Portal:
+
+```tsx
+// Module scope — stable reference, not inline in JSX
+const PAPER_SX = {
+  backgroundColor: TOKEN.background(),   // var(--ep-component-dialog-background)
+  borderRadius:    TOKEN.borderRadius(),  // var(--ep-component-dialog-border-radius)
+  boxShadow:       TOKEN.shadow(),        // var(--ep-component-dialog-shadow)
+} as const;
+
+// In JSX:
+<MuiDialog PaperProps={{ sx: PAPER_SX as any }}>
+```
+
+| MUI component | Surface prop |
+|---|---|
+| `MuiDialog` | `PaperProps.sx` |
+| `MuiDrawer` | `PaperProps.sx` |
+| `MuiMenu` | `PaperProps.sx` |
+| `MuiPopover` | `PaperProps.sx` |
+| `MuiTooltip` | `componentsProps.tooltip.sx` |
+| `MuiBackdrop` | `styled()` directly — Backdrop **is** the portal element |
+
+---
+
+## Overlay component decision table
+
+| Component | Backdrop | Focus | Escape | Click-away | Auto-hide |
+|---|---|---|---|---|---|
+| Tooltip | ❌ | None | ❌ | ❌ | ❌ |
+| Menu | ❌ | List focus | ✅ MUI | ✅ MUI | ❌ |
+| Backdrop | IS backdrop | None | ❌ | Via `onClick` | ❌ |
+| Dialog | Built-in | **Trap** | ✅ MUI | ✅ MUI | ❌ |
+| Drawer (temporary) | Built-in | **Trap** | ✅ MUI | ✅ MUI | ❌ |
+| Drawer (persistent) | ❌ | None | ❌ | ❌ | ❌ |
+| Snackbar | ❌ | Live region | ❌ | Ignore | ✅ 4s |
+| Popover | ❌ | None | ❌ | ✅ MUI | ❌ |
+
+---
+
+## Z-index layering
+
+Never override z-index with tokens — they are structural constants owned by MUI's theme.
+
+| Layer | z-index | Components |
+|---|---|---|
+| App Bar | 1100 | AppBar |
+| Drawer | 1200 | Drawer |
+| Modal / Menu | 1300 | Dialog, Menu, Popover, Backdrop (Modal) |
+| Snackbar | 1400 | Snackbar |
+| Tooltip | 1500 | Tooltip |
+
+---
+
+## Dismissal taxonomy
+
+| Behavior | How it works | Components |
+|---|---|---|
+| **Escape key** | `disableEscapeKeyDown` prop on Modal | Dialog, Drawer, Menu |
+| **Backdrop click** | `onClose(event, reason)` where reason is `'backdropClick'` | Dialog, Drawer |
+| **Click-away** | Transparent backdrop capture layer | Popover, Menu |
+| **Auto-hide** | `autoHideDuration` timer | Snackbar |
+| **Controlled-only** | Parent calls `setOpen(false)` | Backdrop (standalone) |
+
+**Reason string pattern — block backdrop click while allowing Escape:**
+```tsx
+const handleClose = (_: unknown, reason: string) => {
+  if (reason === 'backdropClick') return;
+  setOpen(false);
+};
+```
+
+---
+
+## Backdrop composability
+
+Do **not** compose a standalone `<Backdrop>` with a `<Dialog>` or `<Drawer>`. MUI Modal components include their own backdrop; adding a standalone backdrop would double-stack scrim layers.
+
+| Use case | Which backdrop |
+|---|---|
+| Full-page async loading | `<Backdrop open={loading}>` |
+| Modal dialog with scrim | `<Dialog>` built-in backdrop |
+| Side drawer with scrim | `<Drawer>` built-in backdrop |
+
+</div>

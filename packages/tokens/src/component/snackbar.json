@@ -1,0 +1,32 @@
+{
+  "component": {
+    "snackbar": {
+      "background":         { "$type": "color",     "$value": "{semantic.color.neutral.dark}" },
+      "color":              { "$type": "color",     "$value": "{semantic.color.background.paper}" },
+      "borderRadius":       { "$type": "dimension", "$value": "{semantic.radius.md}" },
+      "transitionDuration": { "$type": "duration",  "$value": "225ms" },
+      "autoHideDuration":   { "$type": "number",    "$value": 4000 },
+
+      "shadow": {
+        "$type": "shadow",
+        "$value": [
+          { "offsetX": "0px", "offsetY": "3px", "blur": "5px",  "spread": "-1px", "color": "rgba(0,0,0,0.20)" },
+          { "offsetX": "0px", "offsetY": "6px", "blur": "10px", "spread":  "0px", "color": "rgba(0,0,0,0.14)" },
+          { "offsetX": "0px", "offsetY": "1px", "blur": "18px", "spread":  "0px", "color": "rgba(0,0,0,0.12)" }
+        ]
+      },
+
+      "padding": {
+        "y": { "$type": "dimension", "$value": "10px" },
+        "x": { "$type": "dimension", "$value": "16px" }
+      },
+
+      "action": {
+        "color": { "$type": "color", "$value": "{semantic.color.brand.primaryLight}" }
+      },
+
+      "minWidth":  { "$type": "dimension", "$value": "288px" },
+      "maxWidth":  { "$type": "dimension", "$value": "568px" }
+    }
+  }
+}

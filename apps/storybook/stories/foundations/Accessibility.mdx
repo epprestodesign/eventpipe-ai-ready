@@ -1,0 +1,111 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Accessibility" />
+
+<div style={{ maxWidth: 760, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Accessibility
+
+EventPipe is committed to **WCAG 2.1 AA** compliance. Accessibility is built into every component — not bolted on.
+
+---
+
+## Standards
+
+| Standard | Level | Scope |
+|---|---|---|
+| WCAG 2.1 | AA | All components |
+| ARIA 1.1 | Best practices | All interactive components |
+| Keyboard navigation | Full | All components |
+
+---
+
+## Focus management
+
+Every interactive component has a visible focus indicator using the **EP focus ring pattern**.
+
+<div style={{ margin: '16px 0 32px', background: '#F9FAFB', borderRadius: 10, padding: '24px' }}>
+  <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 16, color: '#111827' }}>Focus ring pattern</div>
+  <div style={{ display: 'flex', gap: 32, alignItems: 'center', flexWrap: 'wrap' }}>
+    <div>
+      <div style={{
+        display: 'inline-block',
+        padding: '8px 16px',
+        background: 'var(--ep-semantic-color-brand-primary)',
+        color: '#fff',
+        borderRadius: 4,
+        fontSize: 14,
+        fontWeight: 500,
+        outline: '2px solid var(--ep-semantic-color-brand-primary)',
+        outlineOffset: '2px',
+      }}>Focused button</div>
+      <div style={{ fontSize: 12, color: '#6B7280', marginTop: 8, fontFamily: 'monospace' }}>2px solid brand.primary, 2px offset</div>
+    </div>
+    <div style={{ fontSize: 13, color: '#4B5563', maxWidth: 320, lineHeight: 1.6 }}>
+      All interactive controls use a 2px solid outline at 2px offset. The <strong>color</strong> is a design decision (brand.primary by default); the <strong>width and offset</strong> are structural constants.
+    </div>
+  </div>
+</div>
+
+**Three focus behaviors across component types:**
+
+| Behavior | Description | Components |
+|---|---|---|
+| **Focus ring** | Visible outline on `:focus-visible` | Button, Checkbox, Radio, Switch, TextField, Select, Link, Tabs, Pagination, Breadcrumbs |
+| **Background state** | Color fill change on focus (no outline ring) | Menu items, List items, Autocomplete options |
+| **Focus trap** | Tab cycles inside the overlay | Dialog, Drawer (temporary) |
+
+> **Why no focus ring on list-like items?** Outline rings clip inside Portal-rendered overflow containers. Background-state focus is the standard for scrollable list surfaces.
+
+---
+
+## ARIA patterns
+
+| Pattern | Implementation |
+|---|---|
+| `role="dialog"` + `aria-modal` | Dialog, Drawer (temporary) — MUI handles automatically |
+| `role="tablist"` + `role="tab"` + `role="tabpanel"` | Tabs — MUI handles automatically |
+| `role="navigation"` + `aria-label="breadcrumb"` | Breadcrumbs — MUI wraps in `<nav>` |
+| `aria-current="page"` | BreadcrumbItem (last crumb) |
+| `aria-labelledby` + `aria-describedby` | Dialog — consumer must pass `id` to Title/Content |
+| `aria-haspopup` + `aria-expanded` | Popover trigger — consumer responsibility |
+| `aria-live="polite"` | Snackbar (plain, info, success) |
+| `aria-live="assertive"` | Snackbar (error, warning) |
+| `role="status"` + `aria-label` | Backdrop loading state, Dialog loading overlay |
+
+---
+
+## Color contrast
+
+All text/background combinations in the default light theme meet WCAG AA contrast ratios:
+
+- `text.primary` on `background.paper`: **≥ 7:1** (AAA)
+- `text.secondary` on `background.default`: **≥ 4.5:1** (AA)
+- `text.onBrand` on `brand.primary`: **≥ 4.5:1** (AA)
+- Status colors (`error`, `warning`, `success`, `info`) meet AA contrast on white backgrounds
+
+---
+
+## Keyboard navigation
+
+| Component | Keys |
+|---|---|
+| Button, Checkbox, Switch | `Space` / `Enter` to activate |
+| Select, Menu | `↑↓` to navigate, `Enter` to select, `Escape` to close |
+| Tabs | `←→` to switch tabs, `Tab` to move to panel |
+| Dialog, Drawer | `Escape` to close; `Tab`/`Shift+Tab` trapped inside |
+| Pagination | `Tab` between pages; `Enter` to activate |
+| Autocomplete | `↑↓` to navigate options, `Enter` to select |
+
+---
+
+## Testing accessibility
+
+The `@storybook/addon-a11y` addon is enabled. Every story runs axe-core checks automatically. Look for the **Accessibility** panel in the Storybook addons bar to see any violations.
+
+For manual testing:
+- Tab through all interactive elements — every element must be reachable
+- Test with a screen reader (VoiceOver / NVDA)
+- Verify focus returns to the trigger after closing Dialog/Drawer
+
+</div>

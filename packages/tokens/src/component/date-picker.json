@@ -1,0 +1,67 @@
+{
+  "component": {
+    "date-picker": {
+
+      "fontFamily": { "$type": "fontFamily", "$value": "{semantic.typography.fontFamily}" },
+
+      "calendar": {
+        "background": { "$type": "color",     "$value": "{semantic.color.background.paper}" },
+        "padding":    { "$type": "dimension", "$value": "12px" },
+        "width":      { "$type": "dimension", "$value": "300px" }
+      },
+
+      "header": {
+        "paddingY":   { "$type": "dimension", "$value": "8px" },
+        "fontSize":   { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" },
+        "fontWeight": { "$type": "number",    "$value": "600" },
+        "color":      { "$type": "color",     "$value": "{semantic.color.text.primary}" }
+      },
+
+      "weekday": {
+        "fontSize":   { "$type": "dimension", "$value": "{semantic.typography.caption.fontSize}" },
+        "color":      { "$type": "color",     "$value": "{semantic.color.text.secondary}" },
+        "fontWeight": { "$type": "number",    "$value": "500" }
+      },
+
+      "cell": {
+        "size":         { "$type": "dimension", "$value": "36px" },
+        "fontSize":     { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" },
+        "borderRadius": { "$type": "dimension", "$value": "50%" },
+        "gap":          { "$type": "dimension", "$value": "4px" }
+      },
+
+      "day": {
+        "default": {
+          "color":      { "$type": "color", "$value": "{semantic.color.text.primary}" },
+          "background": { "$type": "color", "$value": "transparent" }
+        },
+        "hover": {
+          "color":      { "$type": "color", "$value": "{semantic.color.text.primary}" },
+          "background": { "$type": "color", "$value": "{semantic.color.neutral.lighter}" }
+        },
+        "selected": {
+          "color":      { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+          "background": { "$type": "color", "$value": "{semantic.color.brand.primary}" }
+        },
+        "today": {
+          "borderColor": { "$type": "color",  "$value": "{semantic.color.brand.primary}" },
+          "fontWeight":  { "$type": "number", "$value": "700" }
+        },
+        "outside": {
+          "color": { "$type": "color", "$value": "{semantic.color.text.disabled}" }
+        },
+        "disabled": {
+          "color":      { "$type": "color", "$value": "{semantic.color.text.disabled}" },
+          "background": { "$type": "color", "$value": "transparent" }
+        }
+      },
+
+      "focusRing": {
+        "color":  { "$type": "color",     "$value": "{semantic.color.focus.ring}" },
+        "width":  { "$type": "dimension", "$value": "2px" },
+        "offset": { "$type": "dimension", "$value": "2px" }
+      }
+
+    }
+  }
+}

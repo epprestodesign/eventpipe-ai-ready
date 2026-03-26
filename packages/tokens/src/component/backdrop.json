@@ -1,0 +1,8 @@
+{
+  "component": {
+    "backdrop": {
+      "background": { "$type": "color", "$value": "{semantic.color.action.overlay}" },
+      "transitionDuration": { "$type": "duration", "$value": "225ms" }
+    }
+  }
+}

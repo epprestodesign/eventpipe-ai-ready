@@ -1,0 +1,80 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Get started/Overview" />
+
+<div style={{ maxWidth: 860, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+<div style={{
+  background: 'linear-gradient(135deg, #0057FF 0%, #1E40AF 100%)',
+  borderRadius: 12,
+  padding: '48px 40px',
+  marginBottom: 40,
+  color: '#fff',
+}}>
+  <div style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', opacity: 0.7, marginBottom: 12 }}>EventPipe Design System</div>
+  <h1 style={{ margin: '0 0 16px', fontSize: 36, fontWeight: 700, lineHeight: 1.2, color: '#fff' }}>Build with consistency.<br />Ship with confidence.</h1>
+  <p style={{ margin: 0, fontSize: 17, lineHeight: 1.6, opacity: 0.85 }}>
+    A token-driven, MUI-based component library for EventPipe products.<br />
+    30 production-ready components. Three-layer token architecture. Full accessibility compliance.
+  </p>
+</div>
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, marginBottom: 48 }}>
+  {[
+    { icon: '🎨', title: 'For designers', desc: 'Explore the token system, color palette, typography scale, and design foundations.', link: '?path=/docs/foundations-overview--docs', label: 'Browse Foundations →' },
+    { icon: '⚡', title: 'For engineers', desc: 'Install the package, import token CSS, and start building with typed components.', link: '?path=/docs/get-started-develop--docs', label: 'Start developing →' },
+    { icon: '🧩', title: 'Components', desc: '30 components across Inputs, Selection, Feedback, Navigation, Surfaces, and Overlays.', link: '?path=/docs/components-overview--docs', label: 'Browse components →' },
+    { icon: '🔧', title: 'Tools', desc: 'Wave status, token audit, deviations register, and contributing guidelines.', link: '?path=/docs/tools-wave-status--docs', label: 'Open tools →' },
+  ].map(card => (
+    <div key={card.title} style={{ border: '1px solid #E5E7EB', borderRadius: 10, padding: '24px 24px 20px', background: '#fff' }}>
+      <div style={{ fontSize: 28, marginBottom: 10 }}>{card.icon}</div>
+      <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 8, color: '#111827' }}>{card.title}</div>
+      <p style={{ margin: '0 0 16px', fontSize: 14, color: '#4B5563', lineHeight: 1.5 }}>{card.desc}</p>
+      <a href={card.link} style={{ fontSize: 13, fontWeight: 600, color: '#0057FF', textDecoration: 'none' }}>{card.label}</a>
+    </div>
+  ))}
+</div>
+
+## What's in the system
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, marginBottom: 40 }}>
+  {[
+    { num: '30', label: 'Components', sub: 'Wave 1 + Wave 2 complete' },
+    { num: '244', label: 'Token refs', sub: 'Across 28 component files' },
+    { num: '3', label: 'Token layers', sub: 'Primitive → Semantic → Component' },
+    { num: '100%', label: 'TypeScript', sub: 'All components fully typed' },
+    { num: 'WCAG AA', label: 'Accessibility', sub: 'Focus rings, ARIA, live regions' },
+    { num: 'MUI 5', label: 'Base layer', sub: 'Material UI v5 with EP tokens' },
+  ].map(stat => (
+    <div key={stat.num} style={{ background: '#F9FAFB', borderRadius: 8, padding: '20px 16px', textAlign: 'center' }}>
+      <div style={{ fontSize: 26, fontWeight: 700, color: '#0057FF', marginBottom: 4 }}>{stat.num}</div>
+      <div style={{ fontSize: 13, fontWeight: 600, color: '#111827' }}>{stat.label}</div>
+      <div style={{ fontSize: 12, color: '#6B7280', marginTop: 2 }}>{stat.sub}</div>
+    </div>
+  ))}
+</div>
+
+## Package structure
+
+```
+@eventpipe/tokens   — Compiled CSS custom properties (--ep-component-*, --ep-semantic-*, --ep-primitive-*)
+@eventpipe/ui       — React components built on MUI 5 + EP token layer
+```
+
+## Quick install
+
+```bash
+pnpm add @eventpipe/ui @eventpipe/tokens
+```
+
+```tsx
+// In your app root
+import '@eventpipe/tokens/css';
+
+// In your component
+import { Button } from '@eventpipe/ui';
+
+<Button variant="contained">Create event</Button>
+```
+
+</div>

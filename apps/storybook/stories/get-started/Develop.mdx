@@ -1,0 +1,135 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Get started/Develop" />
+
+<div style={{ maxWidth: 760, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Develop
+
+Everything you need to start building with EventPipe UI.
+
+---
+
+## 1. Install
+
+```bash
+pnpm add @eventpipe/ui @eventpipe/tokens
+```
+
+Or with npm / yarn:
+```bash
+npm install @eventpipe/ui @eventpipe/tokens
+yarn add @eventpipe/ui @eventpipe/tokens
+```
+
+---
+
+## 2. Import token CSS
+
+Import the compiled token stylesheet once at the root of your application. This makes all `--ep-*` CSS custom properties available globally.
+
+```tsx
+// app/layout.tsx  (Next.js App Router)
+import '@eventpipe/tokens/css';
+```
+
+```tsx
+// src/index.tsx  (CRA / Vite)
+import '@eventpipe/tokens/css';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
+
+createRoot(document.getElementById('root')!).render(<App />);
+```
+
+> **Note:** EventPipe UI does **not** require MUI's `ThemeProvider`. Components read tokens from CSS custom properties, not MUI's theme palette.
+
+---
+
+## 3. Use components
+
+All components are named exports from `@eventpipe/ui`.
+
+```tsx
+import { Button, TextField, Select, Dialog } from '@eventpipe/ui';
+import type { ButtonProps, DialogProps } from '@eventpipe/ui';
+
+export function CreateEventForm() {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <>
+      <Button variant="contained" onClick={() => setOpen(true)}>
+        Create event
+      </Button>
+      <Dialog open={open} onClose={() => setOpen(false)} aria-labelledby="title">
+        <Dialog.Title id="title" onClose={() => setOpen(false)}>New event</Dialog.Title>
+        <Dialog.Content>
+          <TextField label="Event name" fullWidth />
+        </Dialog.Content>
+        <Dialog.Actions>
+          <Button onClick={() => setOpen(false)}>Cancel</Button>
+          <Button variant="contained">Create</Button>
+        </Dialog.Actions>
+      </Dialog>
+    </>
+  );
+}
+```
+
+---
+
+## 4. Token-aware styling
+
+When you need custom styles adjacent to EP components, reference CSS variables directly:
+
+```tsx
+// ✅ Reference semantic tokens for custom styles
+<div style={{ color: 'var(--ep-semantic-color-text-secondary)' }}>
+  Helper text
+</div>
+
+// ✅ Use component tokens for consistent spacing
+<div style={{ padding: 'var(--ep-component-card-padding-y) var(--ep-component-card-padding-x)' }}>
+  Custom card content
+</div>
+
+// ❌ Never hardcode design values
+<div style={{ color: '#4B5563' }}>   {/* bypasses token system */}
+  Helper text
+</div>
+```
+
+---
+
+## 5. TypeScript
+
+Every component ships with full TypeScript types.
+
+```tsx
+import type { ButtonProps, ButtonVariant } from '@eventpipe/ui';
+
+// Props are fully typed
+const buttonProps: ButtonProps = {
+  variant: 'contained',  // 'contained' | 'outlined' | 'text' | 'soft'
+  color: 'primary',      // 'primary' | 'secondary' | 'error' | 'warning' | 'success' | 'neutral'
+  size: 'md',            // 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+};
+```
+
+---
+
+## 6. Peer dependencies
+
+`@eventpipe/ui` requires these peer dependencies:
+
+| Package | Version |
+|---|---|
+| `react` | `^18.0.0` |
+| `react-dom` | `^18.0.0` |
+| `@mui/material` | `^5.0.0` |
+| `@emotion/react` | `^11.0.0` |
+| `@emotion/styled` | `^11.0.0` |
+
+</div>

@@ -1,0 +1,26 @@
+{
+  "name": "@eventpipe/tokens",
+  "version": "0.0.1",
+  "private": false,
+  "type": "module",
+  "description": "EventPipe design tokens — primitive, semantic, component layers",
+  "scripts": {
+    "build": "node style-dictionary.config.js && node scripts/validate-tokens.js",
+    "dev": "node --watch style-dictionary.config.js",
+    "validate": "node scripts/validate-tokens.js",
+    "token:diff": "node scripts/diff-tokens.js",
+    "test": "node --test scripts/validate-tokens.test.js"
+  },
+  "exports": {
+    "./css": "./dist/tokens.css",
+    "./tokens": {
+      "import": "./dist/tokens.js",
+      "require": "./dist/tokens.cjs"
+    }
+  },
+  "files": ["dist"],
+  "devDependencies": {
+    "style-dictionary": "^4.3.0",
+    "typescript": "^5.4.5"
+  }
+}

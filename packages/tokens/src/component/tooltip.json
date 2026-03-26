@@ -1,0 +1,27 @@
+{
+  "component": {
+    "tooltip": {
+      "background":   { "$type": "color",     "$value": "{semantic.color.text.primary}" },
+      "color":        { "$type": "color",     "$value": "{semantic.color.text.onBrand}" },
+      "borderRadius": { "$type": "dimension", "$value": "{semantic.radius.sm}" },
+      "maxWidth":     { "$type": "dimension", "$value": "300px" },
+      "arrowSize":    { "$type": "dimension", "$value": "8px" },
+
+      "padding": {
+        "sm": {
+          "y": { "$type": "dimension", "$value": "4px"  },
+          "x": { "$type": "dimension", "$value": "8px"  }
+        },
+        "md": {
+          "y": { "$type": "dimension", "$value": "6px"  },
+          "x": { "$type": "dimension", "$value": "12px" }
+        }
+      },
+
+      "fontSize": {
+        "sm": { "$type": "dimension", "$value": "{semantic.typography.caption.fontSize}" },
+        "md": { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" }
+      }
+    }
+  }
+}

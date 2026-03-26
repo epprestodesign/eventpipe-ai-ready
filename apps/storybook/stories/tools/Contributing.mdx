@@ -1,0 +1,169 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Tools/Contributing" />
+
+<div style={{ maxWidth: 760, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Contributing
+
+How to add a new component to the EventPipe design system.
+
+> Full workflow: `docs/contracts/component-build-workflow.md`
+
+---
+
+## Overview
+
+Every component follows the same build sequence. The order is strict — each step depends on the previous one passing.
+
+```
+Spec → Tokens → UI → Stories → QA
+```
+
+---
+
+## Step 1: Write the spec
+
+Create `docs/specs/components/{component}.md`.
+
+Minimum content:
+- Props table (name, type, default, description)
+- States (default, hover, focus, disabled, loading if applicable)
+- Accessibility requirements (role, keyboard behavior, ARIA)
+- Sizing category (EpSize5 / EpSize3 / fixed / none)
+- MUI base component (or note if fully custom)
+
+---
+
+## Step 2: Create the token file
+
+Create `packages/tokens/src/component/{component}.json`.
+
+**Token structure rules:**
+- Only reference `{semantic.*}` — never `{primitive.*}`
+- Always include a `focusRing` block for interactive components
+- Always include a `disabled` block for components with a disabled state
+- No hardcoded hex, px, or rgba values (exception: `transparent`, `inherit`, `0`)
+
+```json
+{
+  "component": {
+    "mycomponent": {
+      "background": { "$type": "color", "$value": "{semantic.color.surface.default}" },
+      "focusRing": {
+        "color":  { "$type": "color",     "$value": "{semantic.color.brand.primary}" },
+        "width":  { "$type": "dimension", "$value": "2px" },
+        "offset": { "$type": "dimension", "$value": "2px" }
+      }
+    }
+  }
+}
+```
+
+Build and verify:
+```bash
+pnpm --filter @eventpipe/tokens build
+# ✓ ep/validate-tokens: all 3 checks passed
+```
+
+---
+
+## Step 3: Implement the component
+
+Create four files:
+
+```
+packages/ui/src/MyComponent/
+  MyComponent.tsx          # Implementation
+  MyComponent.types.ts     # Public interface (no logic)
+  index.ts                 # Barrel — re-exports only
+apps/storybook/stories/
+  MyComponent.stories.tsx  # Storybook coverage
+```
+
+**Implementation rules:**
+- Define `const TOKEN = { ... } as const` at top — one entry per CSS var
+- No `var(--ep-semantic-*)` or `var(--ep-primitive-*)` in UI code
+- No hardcoded hex, rgba, or design values outside `TOKEN`
+- `shouldForwardProp` blocks all `ep`-prefixed internal props
+- `forwardRef` to the root DOM element
+- Framework resets commented with what MUI default they override
+
+Add exports to `packages/ui/src/index.ts`:
+```ts
+export { MyComponent } from './MyComponent';
+export type { MyComponentProps } from './MyComponent';
+```
+
+---
+
+## Step 4: Write stories
+
+Minimum required stories:
+
+| Story | Required? |
+|---|---|
+| `Default` | Always |
+| `Variants` | If has variants |
+| `Sizes` | If has size prop |
+| `Disabled` | If has disabled state |
+| `Accessibility` | Always |
+| `Token Audit (DevTools)` | Always |
+
+Story conventions:
+- Use `satisfies Meta<typeof MyComponent>` (not `as Meta<...>`)
+- Wire events with `{ action: 'event-name' }` in argTypes
+- No `@mui/icons-material` imports in story files
+- No inline SVG icons
+
+---
+
+## Step 5: QA pipeline
+
+Run in order — each must pass before running the next:
+
+```bash
+pnpm --filter @eventpipe/tokens build     # Token validator passes (3/3)
+pnpm --filter @eventpipe/ui typecheck     # tsc --noEmit, exit 0
+pnpm --filter @eventpipe/ui build         # ESM + CJS + DTS all succeed
+pnpm --filter storybook typecheck         # exit 0
+pnpm --filter storybook build             # static build succeeds
+pnpm --filter @eventpipe/tokens test      # 7/7 token validation tests pass
+```
+
+---
+
+## Step 6: Register deviations
+
+If anything in your implementation deviates from this workflow:
+
+1. Add a code comment explaining the deviation inline
+2. Add an entry to `docs/contracts/component-build-workflow.md` — Deviations register
+3. Update the **Deviations register** page in Storybook
+
+---
+
+## Naming conventions
+
+| Item | Convention | Example |
+|---|---|---|
+| Component name | PascalCase | `MyComponent` |
+| Token file | kebab-case | `my-component.json` |
+| CSS var prefix | `--ep-component-{name}-` | `--ep-component-my-component-background` |
+| Internal styled props | `ep` prefix | `epVariant`, `epSize` |
+| Story title | `Components/{Category}/MyComponent` | `Components/Inputs/MyComponent` |
+
+---
+
+## Category placement
+
+| Category | Use when |
+|---|---|
+| `Components/Inputs` | Text fields, selects, autocomplete, date pickers |
+| `Components/Selection` | Checkbox, radio, switch |
+| `Components/Feedback` | Alerts, snackbars, progress, loading |
+| `Components/Navigation` | Tabs, breadcrumbs, pagination, links |
+| `Components/Surfaces` | Cards, lists, chips, badges |
+| `Components/Overlays` | Dialogs, drawers, menus, popovers |
+
+</div>

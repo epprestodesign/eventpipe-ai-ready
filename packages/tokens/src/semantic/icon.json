@@ -1,0 +1,13 @@
+{
+  "semantic": {
+    "icon": {
+      "size": {
+        "xs": { "$type": "dimension", "$value": "{primitive.icon.size.12}" },
+        "sm": { "$type": "dimension", "$value": "{primitive.icon.size.16}" },
+        "md": { "$type": "dimension", "$value": "{primitive.icon.size.20}" },
+        "lg": { "$type": "dimension", "$value": "{primitive.icon.size.24}" },
+        "xl": { "$type": "dimension", "$value": "{primitive.icon.size.32}" }
+      }
+    }
+  }
+}

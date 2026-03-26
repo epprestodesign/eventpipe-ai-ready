@@ -1,0 +1,52 @@
+{
+  "component": {
+    "menu": {
+      "background":   { "$type": "color",     "$value": "{semantic.color.background.paper}" },
+      "borderRadius": { "$type": "dimension", "$value": "{semantic.radius.lg}" },
+      "minWidth":     { "$type": "dimension", "$value": "160px" },
+
+      "shadow": {
+        "$type": "shadow",
+        "$value": [
+          { "offsetX": "0px", "offsetY": "4px", "blur": "6px",  "spread": "-1px", "color": "rgba(0,0,0,0.10)" },
+          { "offsetX": "0px", "offsetY": "2px", "blur": "4px",  "spread": "-2px", "color": "rgba(0,0,0,0.06)" }
+        ]
+      },
+
+      "item": {
+        "color":                   { "$type": "color", "$value": "{semantic.color.text.primary}" },
+        "colorDisabled":           { "$type": "color", "$value": "{semantic.color.text.disabled}" },
+
+        "background":              { "$type": "color", "$value": "transparent" },
+        "backgroundHover":         { "$type": "color", "$value": "{semantic.color.action.hover}" },
+        "backgroundFocus":         { "$type": "color", "$value": "{semantic.color.action.focus}" },
+        "backgroundSelected":      { "$type": "color", "$value": "{semantic.color.action.selected}" },
+        "backgroundSelectedHover": { "$type": "color", "$value": "{semantic.color.action.focus}" },
+        "backgroundDisabled":      { "$type": "color", "$value": "transparent" },
+
+        "fontSize": { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" },
+
+        "padding": {
+          "y": { "$type": "dimension", "$value": "8px" },
+          "x": { "$type": "dimension", "$value": "16px" }
+        },
+
+        "densePadding": {
+          "y": { "$type": "dimension", "$value": "4px" },
+          "x": { "$type": "dimension", "$value": "16px" }
+        },
+
+        "icon": {
+          "size":  { "$type": "dimension", "$value": "20px" },
+          "color": { "$type": "color",     "$value": "{semantic.color.text.secondary}" },
+          "gap":   { "$type": "dimension", "$value": "12px" }
+        }
+      },
+
+      "divider": {
+        "color":   { "$type": "color",     "$value": "{semantic.color.divider}" },
+        "marginY": { "$type": "dimension", "$value": "4px" }
+      }
+    }
+  }
+}

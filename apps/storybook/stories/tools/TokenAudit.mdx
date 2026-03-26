@@ -1,0 +1,121 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Tools/Token audit" />
+
+<div style={{ maxWidth: 860, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Token audit
+
+Reference for token counts, coverage, and the validation pipeline. Use this page to verify that token infrastructure is healthy before shipping components.
+
+---
+
+## Token counts by layer
+
+| Layer | File count | Token count (approx) |
+|---|---|---|
+| Primitive | ~12 files | ~180 tokens |
+| Semantic | 2 files (light + dark) | ~120 tokens |
+| Component | 28 files | ~420 tokens |
+| **Total** | | **~720 tokens** |
+
+Component token counts grow roughly 10–20 tokens per component. Simple components (Link, Badge) have 6–10; complex components (Button, Alert) have 20–30.
+
+---
+
+## Validation pipeline
+
+Three validators run automatically after every token build:
+
+```bash
+pnpm --filter @eventpipe/tokens build
+# ✓ ep/validate-tokens: all 3 checks passed
+```
+
+| Check | What it validates |
+|---|---|
+| **Check 1** | `dark.json` introduces no new structural keys absent from `light.json` — ensures dark is always a strict subset |
+| **Check 2** | All `{semantic.*}` references in component tokens resolve to vars in `dist/tokens.light.css` — no dangling refs |
+| **Check 3** | `dist/tokens.dark.css` contains no vars absent from `dist/tokens.light.css` — dark is a complete superset |
+
+If any check fails, the build exits non-zero and the CI gate blocks.
+
+---
+
+## CSS var naming convention
+
+Token JSON paths are deterministically converted to CSS custom properties:
+
+```
+component.{name}.{variant}.{color}.backgroundHover
+→ --ep-component-{name}-{variant}-{color}-background-hover
+```
+
+Rules:
+- `camelCase` → `kebab-case`
+- Dots → hyphens
+- Always prefixed: `--ep-component-`, `--ep-semantic-`, `--ep-primitive-`
+
+---
+
+## Per-component token breakdown
+
+| Component | Token count | Token file |
+|---|---|---|
+| Button | 30 | `component/button.json` |
+| TextField | 18 | `component/textfield.json` |
+| Select | 16 | `component/select.json` |
+| Autocomplete | 14 | `component/autocomplete.json` |
+| Alert | 24 | `component/alert.json` |
+| Snackbar | 10 | `component/snackbar.json` |
+| CircularProgress | 6 | `component/circular-progress.json` |
+| LinearProgress | 6 | `component/linear-progress.json` |
+| Skeleton | 4 | `component/skeleton.json` |
+| Backdrop | 4 | `component/backdrop.json` |
+| Dialog | 12 | `component/dialog.json` |
+| Card | 10 | `component/card.json` |
+| List / ListItem | 14 | `component/list.json` |
+| Chip | 18 | `component/chip.json` |
+| Badge | 10 | `component/badge.json` |
+| Checkbox | 12 | `component/checkbox.json` |
+| Radio | 10 | `component/radio.json` |
+| Switch | 14 | `component/switch.json` |
+| Menu / MenuItem | 14 | `component/menu.json` |
+| Tabs | 19 | `component/tabs.json` |
+| Breadcrumbs | 9 | `component/breadcrumbs.json` |
+| Link | 8 | `component/link.json` |
+| Drawer | 9 | `component/drawer.json` |
+| Popover | 5 | `component/popover.json` |
+
+---
+
+## How to audit a component's token coverage
+
+```bash
+# 1. Find all CSS vars the component reads in source
+grep "ep-component-button" packages/ui/src/Button/Button.tsx
+
+# 2. Find all CSS vars the build produces
+grep "ep-component-button" packages/tokens/dist/tokens.light.css
+
+# 3. Diff — every var in (1) must appear in (2)
+# (No vars in (1) should be absent from (2))
+```
+
+Every component story also contains a **Token Audit (DevTools)** story that renders a live table of all vars the component reads, with their resolved CSS values.
+
+---
+
+## Token layer isolation rule
+
+Component implementations must only read `--ep-component-*` vars. Reading `--ep-semantic-*` or `--ep-primitive-*` directly is a deviation and must be registered in the deviations register.
+
+```bash
+# Verify no direct semantic/primitive reads in a component
+grep "ep-semantic\|ep-primitive" packages/ui/src/Button/Button.tsx
+# Expected: no output
+```
+
+Currently registered exceptions: **1** (Drawer close button — see Deviations register).
+
+</div>

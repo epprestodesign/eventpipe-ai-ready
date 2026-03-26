@@ -1,0 +1,12 @@
+{
+  "semantic": {
+    "radius": {
+      "xs":   { "$type": "dimension", "$value": "{primitive.border.radius.xs}" },
+      "sm":   { "$type": "dimension", "$value": "{primitive.border.radius.sm}" },
+      "md":   { "$type": "dimension", "$value": "6px" },
+      "lg":   { "$type": "dimension", "$value": "{primitive.border.radius.md}" },
+      "xl":   { "$type": "dimension", "$value": "{primitive.border.radius.lg}" },
+      "pill": { "$type": "dimension", "$value": "{primitive.border.radius.full}" }
+    }
+  }
+}

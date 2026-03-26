@@ -1,0 +1,150 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Color" />
+
+<div style={{ maxWidth: 860, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Color
+
+The EventPipe color system is built on semantic tokens — you reference intent (`brand.primary`, `status.error`) rather than raw hex values. All colors are available as CSS custom properties on `:root`.
+
+---
+
+## Brand
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 8, marginBottom: 32 }}>
+  {[
+    { name: 'Brand Primary',      cssVar: '--ep-semantic-color-brand-primary' },
+    { name: 'Brand Primary Dark', cssVar: '--ep-semantic-color-brand-primary-dark' },
+    { name: 'Brand Primary Light',cssVar: '--ep-semantic-color-brand-primary-light' },
+    { name: 'Brand Primary Soft', cssVar: '--ep-semantic-color-brand-primary-soft' },
+    { name: 'Brand Secondary',    cssVar: '--ep-semantic-color-brand-secondary' },
+    { name: 'Brand Secondary Dark',cssVar: '--ep-semantic-color-brand-secondary-dark' },
+  ].map(c => (
+    <div key={c.cssVar} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px', background: '#fff', border: '1px solid #E5E7EB', borderRadius: 8 }}>
+      <div style={{ width: 40, height: 40, borderRadius: 6, background: `var(${c.cssVar})`, border: '1px solid rgba(0,0,0,0.08)', flexShrink: 0 }} />
+      <div>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#111827' }}>{c.name}</div>
+        <div style={{ fontSize: 11, color: '#9CA3AF', fontFamily: 'monospace', marginTop: 2 }}>{c.cssVar}</div>
+      </div>
+    </div>
+  ))}
+</div>
+
+## Text
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 8, marginBottom: 32 }}>
+  {[
+    { name: 'Text Primary',   cssVar: '--ep-semantic-color-text-primary' },
+    { name: 'Text Secondary', cssVar: '--ep-semantic-color-text-secondary' },
+    { name: 'Text Disabled',  cssVar: '--ep-semantic-color-text-disabled' },
+    { name: 'Text on Brand',  cssVar: '--ep-semantic-color-text-on-brand' },
+  ].map(c => (
+    <div key={c.cssVar} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px', background: '#fff', border: '1px solid #E5E7EB', borderRadius: 8 }}>
+      <div style={{ width: 40, height: 40, borderRadius: 6, background: `var(${c.cssVar})`, border: '1px solid rgba(0,0,0,0.08)', flexShrink: 0 }} />
+      <div>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#111827' }}>{c.name}</div>
+        <div style={{ fontSize: 11, color: '#9CA3AF', fontFamily: 'monospace', marginTop: 2 }}>{c.cssVar}</div>
+      </div>
+    </div>
+  ))}
+</div>
+
+## Status
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 8, marginBottom: 32 }}>
+  {[
+    { name: 'Error',        cssVar: '--ep-semantic-color-status-error' },
+    { name: 'Error Dark',   cssVar: '--ep-semantic-color-status-error-dark' },
+    { name: 'Error Bg',     cssVar: '--ep-semantic-color-status-error-bg' },
+    { name: 'Warning',      cssVar: '--ep-semantic-color-status-warning' },
+    { name: 'Warning Dark', cssVar: '--ep-semantic-color-status-warning-dark' },
+    { name: 'Success',      cssVar: '--ep-semantic-color-status-success' },
+    { name: 'Success Dark', cssVar: '--ep-semantic-color-status-success-dark' },
+    { name: 'Info',         cssVar: '--ep-semantic-color-status-info' },
+    { name: 'Info Dark',    cssVar: '--ep-semantic-color-status-info-dark' },
+    { name: 'Info Bg',      cssVar: '--ep-semantic-color-status-info-bg' },
+  ].map(c => (
+    <div key={c.cssVar} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px', background: '#fff', border: '1px solid #E5E7EB', borderRadius: 8 }}>
+      <div style={{ width: 40, height: 40, borderRadius: 6, background: `var(${c.cssVar})`, border: '1px solid rgba(0,0,0,0.08)', flexShrink: 0 }} />
+      <div>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#111827' }}>{c.name}</div>
+        <div style={{ fontSize: 11, color: '#9CA3AF', fontFamily: 'monospace', marginTop: 2 }}>{c.cssVar}</div>
+      </div>
+    </div>
+  ))}
+</div>
+
+## Background & Surface
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 8, marginBottom: 32 }}>
+  {[
+    { name: 'Background Default', cssVar: '--ep-semantic-color-background-default' },
+    { name: 'Background Paper',   cssVar: '--ep-semantic-color-background-paper' },
+    { name: 'Surface Default',    cssVar: '--ep-semantic-color-surface-default' },
+    { name: 'Divider',            cssVar: '--ep-semantic-color-divider' },
+    { name: 'Border Default',     cssVar: '--ep-semantic-color-border-default' },
+    { name: 'Border Strong',      cssVar: '--ep-semantic-color-border-strong' },
+  ].map(c => (
+    <div key={c.cssVar} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px', background: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: 8 }}>
+      <div style={{ width: 40, height: 40, borderRadius: 6, background: `var(${c.cssVar})`, border: '1px solid rgba(0,0,0,0.12)', flexShrink: 0 }} />
+      <div>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#111827' }}>{c.name}</div>
+        <div style={{ fontSize: 11, color: '#9CA3AF', fontFamily: 'monospace', marginTop: 2 }}>{c.cssVar}</div>
+      </div>
+    </div>
+  ))}
+</div>
+
+## Action states
+
+Action tokens are semi-transparent overlays applied to backgrounds to indicate interactive states.
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 8, marginBottom: 32 }}>
+  {[
+    { name: 'Action Hover',    cssVar: '--ep-semantic-color-action-hover' },
+    { name: 'Action Focus',    cssVar: '--ep-semantic-color-action-focus' },
+    { name: 'Action Selected', cssVar: '--ep-semantic-color-action-selected' },
+    { name: 'Action Disabled', cssVar: '--ep-semantic-color-action-disabled' },
+    { name: 'Action Overlay',  cssVar: '--ep-semantic-color-action-overlay' },
+  ].map(c => (
+    <div key={c.cssVar} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px', background: '#fff', border: '1px solid #E5E7EB', borderRadius: 8 }}>
+      <div style={{ width: 40, height: 40, borderRadius: 6, background: `var(${c.cssVar})`, border: '1px solid rgba(0,0,0,0.08)', flexShrink: 0 }} />
+      <div>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#111827' }}>{c.name}</div>
+        <div style={{ fontSize: 11, color: '#9CA3AF', fontFamily: 'monospace', marginTop: 2 }}>{c.cssVar}</div>
+      </div>
+    </div>
+  ))}
+</div>
+
+## Neutral scale
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 8, marginBottom: 32 }}>
+  {[
+    { name: 'Neutral Lighter', cssVar: '--ep-semantic-color-neutral-lighter' },
+    { name: 'Neutral Light',   cssVar: '--ep-semantic-color-neutral-light' },
+    { name: 'Neutral Default', cssVar: '--ep-semantic-color-neutral-default' },
+    { name: 'Neutral Dark',    cssVar: '--ep-semantic-color-neutral-dark' },
+    { name: 'Neutral Darker',  cssVar: '--ep-semantic-color-neutral-darker' },
+  ].map(c => (
+    <div key={c.cssVar} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px', background: '#fff', border: '1px solid #E5E7EB', borderRadius: 8 }}>
+      <div style={{ width: 40, height: 40, borderRadius: 6, background: `var(${c.cssVar})`, border: '1px solid rgba(0,0,0,0.08)', flexShrink: 0 }} />
+      <div>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#111827' }}>{c.name}</div>
+        <div style={{ fontSize: 11, color: '#9CA3AF', fontFamily: 'monospace', marginTop: 2 }}>{c.cssVar}</div>
+      </div>
+    </div>
+  ))}
+</div>
+
+---
+
+## Usage rules
+
+- **Only use semantic tokens** in component and application code. Never reference primitive tokens directly.
+- **Component code** must only use `--ep-component-*` vars via the TOKEN helper map. Never `--ep-semantic-*` directly in component CSS.
+- **Application styles** may reference `--ep-semantic-*` vars for custom layout areas adjacent to components.
+- **Never hardcode hex values** — all color decisions must go through the token system.
+
+</div>

@@ -1,0 +1,73 @@
+{
+  "semantic": {
+    "typography": {
+      "fontFamily": { "$type": "fontFamily", "$value": "{primitive.typography.family.sans}" },
+
+      "display": {
+        "fontSize":   { "$type": "dimension", "$value": "{primitive.typography.size.7xl}" },
+        "fontWeight": { "$type": "fontWeight", "$value": "{primitive.typography.weight.bold}" },
+        "lineHeight": { "$type": "number",    "$value": "{primitive.typography.lineHeight.tight}" }
+      },
+      "h1": {
+        "fontSize":   { "$type": "dimension", "$value": "{primitive.typography.size.5xl}" },
+        "fontWeight": { "$type": "fontWeight", "$value": "{primitive.typography.weight.bold}" },
+        "lineHeight": { "$type": "number",    "$value": "{primitive.typography.lineHeight.tight}" }
+      },
+      "h2": {
+        "fontSize":   { "$type": "dimension", "$value": "{primitive.typography.size.4xl}" },
+        "fontWeight": { "$type": "fontWeight", "$value": "{primitive.typography.weight.bold}" },
+        "lineHeight": { "$type": "number",    "$value": "{primitive.typography.lineHeight.tight}" }
+      },
+      "h3": {
+        "fontSize":   { "$type": "dimension", "$value": "{primitive.typography.size.3xl}" },
+        "fontWeight": { "$type": "fontWeight", "$value": "{primitive.typography.weight.semibold}" },
+        "lineHeight": { "$type": "number",    "$value": "{primitive.typography.lineHeight.tight}" }
+      },
+      "h4": {
+        "fontSize":   { "$type": "dimension", "$value": "{primitive.typography.size.2xl}" },
+        "fontWeight": { "$type": "fontWeight", "$value": "{primitive.typography.weight.semibold}" },
+        "lineHeight": { "$type": "number",    "$value": "{primitive.typography.lineHeight.tight}" }
+      },
+      "h5": {
+        "fontSize":   { "$type": "dimension", "$value": "{primitive.typography.size.xl}" },
+        "fontWeight": { "$type": "fontWeight", "$value": "{primitive.typography.weight.semibold}" },
+        "lineHeight": { "$type": "number",    "$value": "{primitive.typography.lineHeight.normal}" }
+      },
+      "h6": {
+        "fontSize":   { "$type": "dimension", "$value": "{primitive.typography.size.lg}" },
+        "fontWeight": { "$type": "fontWeight", "$value": "{primitive.typography.weight.semibold}" },
+        "lineHeight": { "$type": "number",    "$value": "{primitive.typography.lineHeight.normal}" }
+      },
+      "subtitle1": {
+        "fontSize":   { "$type": "dimension", "$value": "{primitive.typography.size.base}" },
+        "fontWeight": { "$type": "fontWeight", "$value": "{primitive.typography.weight.medium}" },
+        "lineHeight": { "$type": "number",    "$value": "{primitive.typography.lineHeight.normal}" }
+      },
+      "subtitle2": {
+        "fontSize":   { "$type": "dimension", "$value": "{primitive.typography.size.sm}" },
+        "fontWeight": { "$type": "fontWeight", "$value": "{primitive.typography.weight.medium}" },
+        "lineHeight": { "$type": "number",    "$value": "{primitive.typography.lineHeight.normal}" }
+      },
+      "body1": {
+        "fontSize":   { "$type": "dimension", "$value": "{primitive.typography.size.base}" },
+        "fontWeight": { "$type": "fontWeight", "$value": "{primitive.typography.weight.regular}" },
+        "lineHeight": { "$type": "number",    "$value": "{primitive.typography.lineHeight.normal}" }
+      },
+      "body2": {
+        "fontSize":   { "$type": "dimension", "$value": "{primitive.typography.size.sm}" },
+        "fontWeight": { "$type": "fontWeight", "$value": "{primitive.typography.weight.regular}" },
+        "lineHeight": { "$type": "number",    "$value": "{primitive.typography.lineHeight.normal}" }
+      },
+      "caption": {
+        "fontSize":   { "$type": "dimension", "$value": "{primitive.typography.size.xs}" },
+        "fontWeight": { "$type": "fontWeight", "$value": "{primitive.typography.weight.regular}" },
+        "lineHeight": { "$type": "number",    "$value": "{primitive.typography.lineHeight.normal}" }
+      },
+      "overline": {
+        "fontSize":   { "$type": "dimension", "$value": "{primitive.typography.size.xs}" },
+        "fontWeight": { "$type": "fontWeight", "$value": "{primitive.typography.weight.medium}" },
+        "lineHeight": { "$type": "number",    "$value": "{primitive.typography.lineHeight.normal}" }
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "component": {
+    "slider": {
+      "track": {
+        "fill": {
+          "primary":   { "$type": "color", "$value": "{semantic.color.brand.primary}" },
+          "secondary": { "$type": "color", "$value": "{semantic.color.brand.secondary}" },
+          "error":     { "$type": "color", "$value": "{semantic.color.status.error}" },
+          "warning":   { "$type": "color", "$value": "{semantic.color.status.warning}" },
+          "info":      { "$type": "color", "$value": "{semantic.color.status.info}" },
+          "success":   { "$type": "color", "$value": "{semantic.color.status.success}" },
+          "neutral":   { "$type": "color", "$value": "{semantic.color.neutral.default}" }
+        },
+        "background": { "$type": "color", "$value": "{semantic.color.neutral.lighter}" }
+      },
+
+      "thumb": {
+        "color": {
+          "primary":   { "$type": "color", "$value": "{semantic.color.brand.primary}" },
+          "secondary": { "$type": "color", "$value": "{semantic.color.brand.secondary}" },
+          "error":     { "$type": "color", "$value": "{semantic.color.status.error}" },
+          "warning":   { "$type": "color", "$value": "{semantic.color.status.warning}" },
+          "info":      { "$type": "color", "$value": "{semantic.color.status.info}" },
+          "success":   { "$type": "color", "$value": "{semantic.color.status.success}" },
+          "neutral":   { "$type": "color", "$value": "{semantic.color.neutral.default}" }
+        }
+      },
+
+      "focusRing": {
+        "color":  { "$type": "color",     "$value": "{semantic.color.focus.ring}" },
+        "width":  { "$type": "dimension", "$value": "2px" },
+        "offset": { "$type": "dimension", "$value": "2px" }
+      },
+
+      "disabled": {
+        "color": { "$type": "color", "$value": "{semantic.color.action.disabled}" }
+      },
+
+      "valueLabel": {
+        "background": { "$type": "color", "$value": "{semantic.color.neutral.dark}" },
+        "text":       { "$type": "color", "$value": "{semantic.color.text.onBrand}" }
+      },
+
+      "size": {
+        "sm": {
+          "thumbSize":   { "$type": "dimension", "$value": "14px" },
+          "trackHeight": { "$type": "dimension", "$value": "4px" }
+        },
+        "md": {
+          "thumbSize":   { "$type": "dimension", "$value": "20px" },
+          "trackHeight": { "$type": "dimension", "$value": "6px" }
+        },
+        "lg": {
+          "thumbSize":   { "$type": "dimension", "$value": "28px" },
+          "trackHeight": { "$type": "dimension", "$value": "8px" }
+        }
+      }
+    }
+  }
+}

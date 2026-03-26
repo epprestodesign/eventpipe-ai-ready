@@ -1,0 +1,13 @@
+{
+  "component": {
+    "skeleton": {
+      "background": { "$type": "color", "$value": "{semantic.color.action.focus}" },
+
+      "borderRadius": {
+        "text":        { "$type": "dimension", "$value": "{semantic.radius.sm}" },
+        "rectangular": { "$type": "dimension", "$value": "0px" },
+        "rounded":     { "$type": "dimension", "$value": "{semantic.radius.lg}" }
+      }
+    }
+  }
+}

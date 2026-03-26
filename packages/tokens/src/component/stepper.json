@@ -1,0 +1,57 @@
+{
+  "component": {
+    "stepper": {
+
+      "indicator": {
+        "size":         { "$type": "dimension", "$value": "28px" },
+        "borderRadius": { "$type": "dimension", "$value": "50%" },
+        "fontSize":     { "$type": "dimension", "$value": "12px" },
+        "fontWeight":   { "$type": "number",    "$value": "600" },
+        "borderWidth":  { "$type": "dimension", "$value": "2px" },
+
+        "inactive": {
+          "background":   { "$type": "color", "$value": "transparent" },
+          "borderColor":  { "$type": "color", "$value": "{semantic.color.neutral.medium}" },
+          "color":        { "$type": "color", "$value": "{semantic.color.text.secondary}" }
+        },
+        "active": {
+          "background":   { "$type": "color", "$value": "{semantic.color.brand.primary}" },
+          "borderColor":  { "$type": "color", "$value": "{semantic.color.brand.primary}" },
+          "color":        { "$type": "color", "$value": "{semantic.color.text.onBrand}" }
+        },
+        "completed": {
+          "background":   { "$type": "color", "$value": "{semantic.color.brand.primary}" },
+          "borderColor":  { "$type": "color", "$value": "{semantic.color.brand.primary}" },
+          "color":        { "$type": "color", "$value": "{semantic.color.text.onBrand}" }
+        },
+        "disabled": {
+          "background":   { "$type": "color", "$value": "transparent" },
+          "borderColor":  { "$type": "color", "$value": "{semantic.color.neutral.lighter}" },
+          "color":        { "$type": "color", "$value": "{semantic.color.text.disabled}" }
+        }
+      },
+
+      "label": {
+        "fontFamily":         { "$type": "fontFamily", "$value": "{semantic.typography.fontFamily}" },
+        "fontSize":           { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" },
+        "activeWeight":       { "$type": "number",    "$value": "600" },
+        "inactiveColor":      { "$type": "color",     "$value": "{semantic.color.text.secondary}" },
+        "activeColor":        { "$type": "color",     "$value": "{semantic.color.text.primary}" },
+        "completedColor":     { "$type": "color",     "$value": "{semantic.color.text.primary}" },
+        "disabledColor":      { "$type": "color",     "$value": "{semantic.color.text.disabled}" }
+      },
+
+      "description": {
+        "fontSize": { "$type": "dimension", "$value": "{semantic.typography.caption.fontSize}" },
+        "color":    { "$type": "color",     "$value": "{semantic.color.text.secondary}" }
+      },
+
+      "connector": {
+        "color":          { "$type": "color",     "$value": "{semantic.color.divider}" },
+        "completedColor": { "$type": "color",     "$value": "{semantic.color.brand.primary}" },
+        "thickness":      { "$type": "dimension", "$value": "2px" }
+      }
+
+    }
+  }
+}

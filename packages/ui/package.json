@@ -1,0 +1,43 @@
+{
+  "name": "@eventpipe/ui",
+  "version": "0.0.1",
+  "private": false,
+  "type": "module",
+  "description": "EventPipe component library — MUI-based, token-driven",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts,.tsx"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": ["dist"],
+  "dependencies": {
+    "@mui/icons-material": "^5.15.18",
+    "@mui/material": "^5.15.18",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@eventpipe/tokens": "workspace:*",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.1.0",
+    "typescript": "^5.4.5"
+  }
+}

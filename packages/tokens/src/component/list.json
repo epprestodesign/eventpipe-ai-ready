@@ -1,0 +1,41 @@
+{
+  "component": {
+    "list": {
+      "item": {
+        "color":          { "$type": "color", "$value": "{semantic.color.text.primary}" },
+        "colorSecondary": { "$type": "color", "$value": "{semantic.color.text.secondary}" },
+        "colorDisabled":  { "$type": "color", "$value": "{semantic.color.text.disabled}" },
+
+        "background":              { "$type": "color", "$value": "transparent" },
+        "backgroundHover":         { "$type": "color", "$value": "{semantic.color.action.hover}" },
+        "backgroundFocus":         { "$type": "color", "$value": "{semantic.color.action.focus}" },
+        "backgroundSelected":      { "$type": "color", "$value": "{semantic.color.action.selected}" },
+        "backgroundSelectedHover": { "$type": "color", "$value": "{semantic.color.action.focus}" },
+        "backgroundDisabled":      { "$type": "color", "$value": "transparent" },
+
+        "fontSize": { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" },
+
+        "padding": {
+          "y": { "$type": "dimension", "$value": "8px" },
+          "x": { "$type": "dimension", "$value": "16px" }
+        },
+
+        "densePadding": {
+          "y": { "$type": "dimension", "$value": "4px" },
+          "x": { "$type": "dimension", "$value": "16px" }
+        },
+
+        "icon": {
+          "size":  { "$type": "dimension", "$value": "20px" },
+          "color": { "$type": "color",     "$value": "{semantic.color.text.secondary}" },
+          "gap":   { "$type": "dimension", "$value": "12px" }
+        }
+      },
+
+      "divider": {
+        "color":   { "$type": "color",     "$value": "{semantic.color.divider}" },
+        "marginY": { "$type": "dimension", "$value": "4px" }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "component": {
+    "circular-progress": {
+      "size": {
+        "xs": { "$type": "dimension", "$value": "16px" },
+        "sm": { "$type": "dimension", "$value": "24px" },
+        "md": { "$type": "dimension", "$value": "40px" },
+        "lg": { "$type": "dimension", "$value": "56px" },
+        "xl": { "$type": "dimension", "$value": "72px" }
+      },
+
+      "color": {
+        "primary":   { "$type": "color", "$value": "{semantic.color.brand.primary}" },
+        "secondary": { "$type": "color", "$value": "{semantic.color.brand.secondary}" },
+        "error":     { "$type": "color", "$value": "{semantic.color.status.error}" },
+        "warning":   { "$type": "color", "$value": "{semantic.color.status.warning}" },
+        "info":      { "$type": "color", "$value": "{semantic.color.status.info}" },
+        "success":   { "$type": "color", "$value": "{semantic.color.status.success}" },
+        "neutral":   { "$type": "color", "$value": "{semantic.color.neutral.default}" }
+      }
+    }
+  }
+}

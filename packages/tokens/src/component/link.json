@@ -1,0 +1,18 @@
+{
+  "component": {
+    "link": {
+      "fontFamily":      { "$type": "fontFamily", "$value": "{semantic.typography.fontFamily}" },
+      "color":           { "$type": "color", "$value": "{semantic.color.brand.primary}" },
+      "colorHover":      { "$type": "color", "$value": "{semantic.color.brand.primaryDark}" },
+      "colorVisited":    { "$type": "color", "$value": "{semantic.color.brand.primaryDark}" },
+      "colorSecondary":  { "$type": "color", "$value": "{semantic.color.brand.secondary}" },
+      "colorSecondaryHover": { "$type": "color", "$value": "{semantic.color.brand.secondaryDark}" },
+
+      "focusRing": {
+        "color":  { "$type": "color",     "$value": "{semantic.color.focus.ring}" },
+        "width":  { "$type": "dimension", "$value": "2px" },
+        "offset": { "$type": "dimension", "$value": "2px" }
+      }
+    }
+  }
+}

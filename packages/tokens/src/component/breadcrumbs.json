@@ -1,0 +1,23 @@
+{
+  "component": {
+    "breadcrumbs": {
+      "item": {
+        "color":        { "$type": "color", "$value": "{semantic.color.text.secondary}" },
+        "colorActive":  { "$type": "color", "$value": "{semantic.color.text.primary}" },
+        "colorHover":   { "$type": "color", "$value": "{semantic.color.text.primary}" },
+        "fontSize":     { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" }
+      },
+
+      "separator": {
+        "color": { "$type": "color",     "$value": "{semantic.color.text.disabled}" },
+        "gap":   { "$type": "dimension", "$value": "4px" }
+      },
+
+      "focusRing": {
+        "color":  { "$type": "color",     "$value": "{semantic.color.focus.ring}" },
+        "width":  { "$type": "dimension", "$value": "2px" },
+        "offset": { "$type": "dimension", "$value": "2px" }
+      }
+    }
+  }
+}

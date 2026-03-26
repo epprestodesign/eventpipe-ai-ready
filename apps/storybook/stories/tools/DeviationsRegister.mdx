@@ -1,0 +1,166 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Tools/Deviations register" />
+
+<div style={{ maxWidth: 900, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Deviations register
+
+When a component must deviate from the standard build workflow, it is documented here. Deviations are reviewed and approved before merging.
+
+> Source of truth: `docs/contracts/component-build-workflow.md` — Deviations register section.
+
+---
+
+## What counts as a deviation?
+
+A deviation is any intentional departure from the rules in the component build workflow:
+
+- Reading `--ep-semantic-*` or `--ep-primitive-*` vars directly (token layer isolation)
+- Using `@mui/icons-material` directly (icon system)
+- Skipping a required story (Storybook coverage)
+- Non-standard prop forwarding or typing patterns
+
+Deviations are **not** tracked for:
+- Framework resets (overriding MUI internal slot geometry)
+- Graduated system rules (patterns that have been formally adopted)
+
+---
+
+## Register
+
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #E5E7EB', background: '#F9FAFB' }}>
+      <th style={{ textAlign: 'left', padding: '8px 12px', color: '#6B7280', whiteSpace: 'nowrap' }}>Component</th>
+      <th style={{ textAlign: 'left', padding: '8px 12px', color: '#6B7280' }}>Deviation</th>
+      <th style={{ textAlign: 'left', padding: '8px 12px', color: '#6B7280' }}>Reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    {[
+      {
+        component: 'Alert',
+        deviation: 'Default severity icons rendered by MUI (not via <Icon />)',
+        reason: 'MUI Alert maps severity prop to its own icon slot; overriding would require reimplementing MUI\'s slot system.',
+      },
+      {
+        component: 'Alert',
+        deviation: 'closeIcon uses MUI\'s default CloseIcon from @mui/icons-material',
+        reason: 'MUI\'s AlertTitle slot renders the close button; extracting it to use <Icon /> would require forking the MUI Alert internals.',
+      },
+      {
+        component: 'Select',
+        deviation: 'IconComponent overrides MUI default KeyboardArrowDownIcon with <Icon name="chevron-down" />',
+        reason: 'Enforces Icon system usage for all icons; MUI\'s default icon couples to @mui/icons-material which violates the icon system contract.',
+      },
+      {
+        component: 'Switch',
+        deviation: 'Focus ring applied via &:has(.Mui-focusVisible) on root instead of &.Mui-focusVisible on switchBase',
+        reason: 'Switch root has overflow: hidden which would clip a box-shadow focus ring on inner elements. :has() on the root targets a scope that is not clipped. WCAG 2.1 AA met; :has() has baseline 2023 support.',
+      },
+      {
+        component: 'Checkbox',
+        deviation: 'Focus ring borderRadius: "2px" (not "0")',
+        reason: 'Slightly rounded corners on the outline match the checkbox square icon shape and align with common design system conventions. Not a functional deviation.',
+      },
+      {
+        component: 'Radio',
+        deviation: 'Focus ring borderRadius: "50%"',
+        reason: 'Matches the circular Radio shape; a rectangular outline would look misaligned.',
+      },
+      {
+        component: 'Menu',
+        deviation: 'Keyboard focus uses backgroundFocus color change instead of focusRing outline',
+        reason: 'Outline rings clip inside Portal-rendered overflow containers and scrollable lists. Standard menu UX uses background-state focus. Applies to all list-like interactive surfaces (Menu, List, Autocomplete options).',
+      },
+      {
+        component: 'Tabs',
+        deviation: 'value and defaultValue cast to any when passed to MuiTabs',
+        reason: 'MUI types value as string | number | readonly string[] | undefined. EP spec allows unknown (any tab identifier type). Cast is scoped to the single MUI prop pass-through.',
+      },
+      {
+        component: 'Tabs',
+        deviation: 'Tab forwardRef uses HTMLDivElement (not HTMLButtonElement)',
+        reason: 'MUI\'s styled Tab root types internally as HTMLDivElement. Using HTMLButtonElement causes a TypeScript assignment error.',
+      },
+      {
+        component: 'Tabs',
+        deviation: 'component prop removed from TabProps',
+        reason: 'styled(MuiTab) loses the OverridableComponent typing. Prop removed to avoid as any cast at the prop level.',
+      },
+      {
+        component: 'Breadcrumbs',
+        deviation: 'component prop removed from BreadcrumbLink',
+        reason: 'styled(MuiLink) loses the OverridableComponent typing (same as Button). Prop removed to avoid the as any cast.',
+      },
+      {
+        component: 'Breadcrumbs',
+        deviation: 'Default separator uses <span style={{ color: TOKEN.separatorColor() }}> wrapper',
+        reason: 'Icon component does not expose a style prop. A wrapper span sets color via currentColor inheritance, which the Icon SVG respects.',
+      },
+      {
+        component: 'Drawer',
+        deviation: 'Close button color tokens use --ep-semantic-color-* vars directly',
+        reason: 'DrawerHeader\'s close button is structurally identical to Dialog\'s but lives outside the Dialog token namespace. Referencing semantic vars directly is acceptable because the close button is not a design-differentiating element across overlay types.',
+      },
+      {
+        component: 'Drawer',
+        deviation: 'width token applied conditionally per anchor (not in static PAPER_SX)',
+        reason: 'Width only applies to left/right anchors; top/bottom drawers should fill the viewport width. PAPER_SX holds invariant surface styles; width is spread into PaperProps.sx conditionally in render.',
+      },
+      {
+        component: 'Popover',
+        deviation: 'anchorEl: Element | null (not HTMLElement | null)',
+        reason: 'MUI Popover accepts Element | null. Using the broader Element type matches MUI\'s own typing and avoids unnecessarily restricting to HTMLElement.',
+      },
+      {
+        component: 'Table',
+        deviation: 'MuiTableSortLabel not used; sort UI implemented directly in TableHeaderCell',
+        reason: 'MuiTableSortLabel imports ArrowDownwardIcon from @mui/icons-material directly, violating the icon system contract. Sort icon rendered via <Icon> with TOKEN.sortIconColor() assigned as inline style color on a span wrapper (same pattern as Breadcrumbs separator).',
+      },
+      {
+        component: 'Table',
+        deviation: 'scope="col" fixed internally in TableHeaderCell; not exposed as a prop',
+        reason: 'scope is a structural accessibility requirement for column headers — not a consumer design decision. Fixing it internally prevents misuse and removes it from the public API surface.',
+      },
+      {
+        component: 'FilterBar',
+        deviation: 'MuiMenuItem from @mui/material/MenuItem used directly as Select option children',
+        reason: "EP's MenuItem is designed for contextual menus (Menu component). MUI Select requires children with a value prop that EP MenuItem does not expose. Using MUI's MenuItem for option rendering is the accepted pattern — established in Select stories.",
+      },
+      {
+        component: 'TransferList',
+        deviation: 'Checkbox staging selection state owned internally (Set<string>) — not consumer-owned',
+        reason: 'Pattern B requires selection state to live in the consumer. TransferList checkbox state is transient pre-move staging state, not persistent data. Once items are moved, selection is cleared. Consumer owns the list data arrays (leftItems/rightItems) which is the persistent state that matters. Justified deviation: checkbox state is a UI affordance local to the component interaction cycle.',
+      },
+      {
+        component: 'CommandPalette',
+        deviation: 'MuiDialog used directly (not the EP Dialog compound component)',
+        reason: 'EP Dialog is built for confirmation/modal workflows with title/actions slots. CommandPalette is a search launcher with a custom TextField header and scrollable list — incompatible with the Dialog slot model. MuiDialog is used directly as the Portal/backdrop primitive, the same way every EP component uses its own MUI base.',
+      },
+      {
+        component: 'CommandPalette',
+        deviation: 'DOM focus stays on TextField input throughout keyboard navigation (not moved to list items)',
+        reason: 'Command palettes are search-first UX — the user types to filter, then navigates. Moving focus to list items on ArrowDown would break typing continuity and require the user to refocus the input to add characters. Active item is tracked via activeIndex state; items receive aria-selected and the input carries aria-activedescendant for screen-reader announcements. WCAG 2.1 AA met.',
+      },
+    ].map((row, i) => (
+      <tr key={i} style={{ borderBottom: '1px solid #F3F4F6' }}>
+        <td style={{ padding: '10px 12px', fontWeight: 600, whiteSpace: 'nowrap', verticalAlign: 'top', color: '#111827' }}>{row.component}</td>
+        <td style={{ padding: '10px 12px', verticalAlign: 'top', color: '#374151', fontFamily: 'monospace', fontSize: 12 }}>{row.deviation}</td>
+        <td style={{ padding: '10px 12px', verticalAlign: 'top', color: '#6B7280', lineHeight: 1.5 }}>{row.reason}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+---
+
+## How to register a new deviation
+
+1. Implement the deviation with a code comment explaining why
+2. Add an entry to `docs/contracts/component-build-workflow.md` — Deviations register section
+3. Update this page with the same entry
+4. Get approval in code review before merging
+
+</div>

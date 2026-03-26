@@ -1,0 +1,126 @@
+{
+  "component": {
+    "alert": {
+      "borderRadius": { "$type": "dimension", "$value": "{semantic.radius.sm}" },
+      "borderWidth":  { "$type": "dimension", "$value": "1px" },
+      "iconGap":      { "$type": "dimension", "$value": "12px" },
+      "actionGap":    { "$type": "dimension", "$value": "16px" },
+
+      "padding": {
+        "xs": { "y": { "$type": "dimension", "$value": "6px"  }, "x": { "$type": "dimension", "$value": "10px" } },
+        "sm": { "y": { "$type": "dimension", "$value": "8px"  }, "x": { "$type": "dimension", "$value": "12px" } },
+        "md": { "y": { "$type": "dimension", "$value": "12px" }, "x": { "$type": "dimension", "$value": "16px" } },
+        "lg": { "y": { "$type": "dimension", "$value": "16px" }, "x": { "$type": "dimension", "$value": "20px" } },
+        "xl": { "y": { "$type": "dimension", "$value": "20px" }, "x": { "$type": "dimension", "$value": "24px" } }
+      },
+
+      "error": {
+        "standard": {
+          "background": { "$type": "color", "$value": "{semantic.color.status.errorBg}" },
+          "text":       { "$type": "color", "$value": "{semantic.color.status.errorText}" },
+          "icon":       { "$type": "color", "$value": "{semantic.color.status.errorText}" },
+          "border":     { "$type": "color", "$value": "transparent" }
+        },
+        "filled": {
+          "background": { "$type": "color", "$value": "{semantic.color.status.error}" },
+          "text":       { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+          "icon":       { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+          "border":     { "$type": "color", "$value": "transparent" }
+        },
+        "outlined": {
+          "background": { "$type": "color", "$value": "transparent" },
+          "text":       { "$type": "color", "$value": "{semantic.color.status.error}" },
+          "icon":       { "$type": "color", "$value": "{semantic.color.status.error}" },
+          "border":     { "$type": "color", "$value": "{semantic.color.status.error}" }
+        },
+        "soft": {
+          "background": { "$type": "color", "$value": "{semantic.color.status.errorBg}" },
+          "text":       { "$type": "color", "$value": "{semantic.color.status.error}" },
+          "icon":       { "$type": "color", "$value": "{semantic.color.status.error}" },
+          "border":     { "$type": "color", "$value": "{semantic.color.status.errorBorder}" }
+        }
+      },
+
+      "warning": {
+        "standard": {
+          "background": { "$type": "color", "$value": "{semantic.color.status.warningBg}" },
+          "text":       { "$type": "color", "$value": "{semantic.color.status.warningText}" },
+          "icon":       { "$type": "color", "$value": "{semantic.color.status.warningText}" },
+          "border":     { "$type": "color", "$value": "transparent" }
+        },
+        "filled": {
+          "background": { "$type": "color", "$value": "{semantic.color.status.warning}" },
+          "text":       { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+          "icon":       { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+          "border":     { "$type": "color", "$value": "transparent" }
+        },
+        "outlined": {
+          "background": { "$type": "color", "$value": "transparent" },
+          "text":       { "$type": "color", "$value": "{semantic.color.status.warning}" },
+          "icon":       { "$type": "color", "$value": "{semantic.color.status.warning}" },
+          "border":     { "$type": "color", "$value": "{semantic.color.status.warning}" }
+        },
+        "soft": {
+          "background": { "$type": "color", "$value": "{semantic.color.status.warningBg}" },
+          "text":       { "$type": "color", "$value": "{semantic.color.status.warning}" },
+          "icon":       { "$type": "color", "$value": "{semantic.color.status.warning}" },
+          "border":     { "$type": "color", "$value": "{semantic.color.status.warningBorder}" }
+        }
+      },
+
+      "info": {
+        "standard": {
+          "background": { "$type": "color", "$value": "{semantic.color.status.infoBg}" },
+          "text":       { "$type": "color", "$value": "{semantic.color.status.infoText}" },
+          "icon":       { "$type": "color", "$value": "{semantic.color.status.infoText}" },
+          "border":     { "$type": "color", "$value": "transparent" }
+        },
+        "filled": {
+          "background": { "$type": "color", "$value": "{semantic.color.status.info}" },
+          "text":       { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+          "icon":       { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+          "border":     { "$type": "color", "$value": "transparent" }
+        },
+        "outlined": {
+          "background": { "$type": "color", "$value": "transparent" },
+          "text":       { "$type": "color", "$value": "{semantic.color.status.info}" },
+          "icon":       { "$type": "color", "$value": "{semantic.color.status.info}" },
+          "border":     { "$type": "color", "$value": "{semantic.color.status.info}" }
+        },
+        "soft": {
+          "background": { "$type": "color", "$value": "{semantic.color.status.infoBg}" },
+          "text":       { "$type": "color", "$value": "{semantic.color.status.info}" },
+          "icon":       { "$type": "color", "$value": "{semantic.color.status.info}" },
+          "border":     { "$type": "color", "$value": "{semantic.color.status.infoBorder}" }
+        }
+      },
+
+      "success": {
+        "standard": {
+          "background": { "$type": "color", "$value": "{semantic.color.status.successBg}" },
+          "text":       { "$type": "color", "$value": "{semantic.color.status.successText}" },
+          "icon":       { "$type": "color", "$value": "{semantic.color.status.successText}" },
+          "border":     { "$type": "color", "$value": "transparent" }
+        },
+        "filled": {
+          "background": { "$type": "color", "$value": "{semantic.color.status.success}" },
+          "text":       { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+          "icon":       { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+          "border":     { "$type": "color", "$value": "transparent" }
+        },
+        "outlined": {
+          "background": { "$type": "color", "$value": "transparent" },
+          "text":       { "$type": "color", "$value": "{semantic.color.status.success}" },
+          "icon":       { "$type": "color", "$value": "{semantic.color.status.success}" },
+          "border":     { "$type": "color", "$value": "{semantic.color.status.success}" }
+        },
+        "soft": {
+          "background": { "$type": "color", "$value": "{semantic.color.status.successBg}" },
+          "text":       { "$type": "color", "$value": "{semantic.color.status.success}" },
+          "icon":       { "$type": "color", "$value": "{semantic.color.status.success}" },
+          "border":     { "$type": "color", "$value": "{semantic.color.status.successBorder}" }
+        }
+      }
+    }
+  }
+}

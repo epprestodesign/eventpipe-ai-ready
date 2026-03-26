@@ -1,0 +1,54 @@
+{
+  "component": {
+    "command-palette": {
+
+      "overlay": {
+        "background":   { "$type": "color",     "$value": "{semantic.color.background.paper}" },
+        "borderRadius": { "$type": "dimension", "$value": "{semantic.radius.lg}" },
+        "shadow": {
+          "$type": "shadow",
+          "$value": "{semantic.elevation.modal}"
+        },
+        "width":     { "$type": "dimension", "$value": "560px" },
+        "topOffset": { "$type": "dimension", "$value": "15vh" }
+      },
+
+      "input": {
+        "fontSize": { "$type": "dimension", "$value": "{semantic.typography.body1.fontSize}" },
+        "paddingY": { "$type": "dimension", "$value": "14px" },
+        "paddingX": { "$type": "dimension", "$value": "16px" }
+      },
+
+      "divider": {
+        "color": { "$type": "color", "$value": "{semantic.color.divider}" }
+      },
+
+      "item": {
+        "paddingY":              { "$type": "dimension", "$value": "10px" },
+        "paddingX":              { "$type": "dimension", "$value": "16px" },
+        "fontSize":              { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" },
+        "descriptionFontSize":   { "$type": "dimension", "$value": "{semantic.typography.caption.fontSize}" },
+        "descriptionColor":      { "$type": "color",     "$value": "{semantic.color.text.secondary}" },
+        "shortcutColor":         { "$type": "color",     "$value": "{semantic.color.text.secondary}" },
+        "shortcutFontSize":      { "$type": "dimension", "$value": "{semantic.typography.caption.fontSize}" }
+      },
+
+      "list": {
+        "maxHeight": { "$type": "dimension", "$value": "400px" }
+      },
+
+      "group": {
+        "labelFontSize":   { "$type": "dimension", "$value": "{semantic.typography.caption.fontSize}" },
+        "labelColor":      { "$type": "color",     "$value": "{semantic.color.text.secondary}" },
+        "labelFontWeight": { "$type": "number",    "$value": "600" },
+        "labelPaddingY":   { "$type": "dimension", "$value": "8px" }
+      },
+
+      "empty": {
+        "fontSize": { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" },
+        "color":    { "$type": "color",     "$value": "{semantic.color.text.secondary}" }
+      }
+
+    }
+  }
+}

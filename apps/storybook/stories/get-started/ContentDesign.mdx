@@ -1,0 +1,88 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Get started/Content design" />
+
+<div style={{ maxWidth: 760, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Content design
+
+Writing guidelines for UI text in EventPipe products.
+
+---
+
+## Voice and tone
+
+EventPipe's voice is **direct, helpful, and human.** It respects users' time without being terse, and uses plain language without being overly casual.
+
+| Quality | In practice |
+|---|---|
+| **Direct** | Lead with the action or result. Don't bury the point. |
+| **Helpful** | Anticipate what the user needs next. Provide enough context without overwhelming. |
+| **Human** | Write like a knowledgeable colleague, not a legal document. |
+| **Consistent** | Use the same terms across the product. Avoid synonyms for the same concept. |
+
+---
+
+## Writing for UI components
+
+### Buttons
+
+- Use **verb + noun** for primary actions: _Create event_, _Save changes_, _Delete venue_
+- Use a single verb for secondary actions in context: _Cancel_, _Close_, _Edit_
+- Capitalize only the first word (sentence case): ~~CREATE EVENT~~ → _Create event_
+- Keep labels under 3 words where possible
+
+### Labels and form fields
+
+- Use **noun phrases** for labels: _Event name_, _Start date_, _Ticket price_
+- Use **sentence case**: ~~Event Name~~ → _Event name_
+- Place labels **above** fields (not inline, which reduces scannability)
+- Use placeholder text sparingly — it disappears on input and is not a substitute for a label
+
+### Dialogs
+
+- **Title**: state the action or outcome (e.g., _Delete event?_, _Edit venue details_)
+- **Body**: explain consequences, especially for destructive actions
+- **Primary button**: mirrors the dialog title verb (_Delete_, _Save_, _Confirm_)
+- **Cancel button**: always labeled _Cancel_, never _No_ or _Dismiss_
+
+### Empty states
+
+- Explain what the space is for: _No events yet_
+- Provide a clear next step: _Create your first event_
+- Avoid: _Nothing here_, _No data found_, _Empty_
+
+### Error messages
+
+- Say what went wrong in plain terms
+- Tell the user what to do next
+- Avoid jargon and blame: ~~Error 422~~ → _This email is already in use. Try signing in instead._
+
+### Confirmation dialogs (destructive)
+
+- Always mention what will be deleted by name when possible: _Delete "Summer Gala 2026"?_
+- State that the action cannot be undone when relevant
+- Make the destructive button red (`color="error"`) and specific: _Delete event_, not just _Delete_
+
+---
+
+## Capitalization
+
+| Usage | Convention | Example |
+|---|---|---|
+| UI labels, buttons | Sentence case | _Create event_ |
+| Section headings | Sentence case | _Event details_ |
+| Navigation items | Title Case | _My Events_ |
+| Error messages | Sentence case | _Please enter a valid email_ |
+| Tooltip text | Sentence case | _Opens in a new tab_ |
+
+---
+
+## Numbers and dates
+
+- Use numerals for quantities: _3 events_, _500 attendees_ (not _three events_)
+- Date format: _August 15, 2026_ (full month name in context); _Aug 15_ in compact UI
+- Time: use 12-hour with am/pm: _9:00 am_, _2:30 pm_
+- Currency: _$1,200_ (no decimals for whole amounts)
+
+</div>

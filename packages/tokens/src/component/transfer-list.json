@@ -1,0 +1,58 @@
+{
+  "component": {
+    "transfer-list": {
+
+      "list": {
+        "background":   { "$type": "color",     "$value": "{semantic.color.background.paper}" },
+        "borderColor":  { "$type": "color",     "$value": "{semantic.color.divider}" },
+        "borderRadius": { "$type": "dimension", "$value": "{semantic.radius.sm}" },
+        "minHeight":    { "$type": "dimension", "$value": "240px" },
+        "maxHeight":    { "$type": "dimension", "$value": "360px" },
+        "width":        { "$type": "dimension", "$value": "280px" }
+      },
+
+      "header": {
+        "background":         { "$type": "color",     "$value": "{semantic.color.neutral.lighter}" },
+        "selectedBackground": { "$type": "color",     "$value": "{semantic.color.brand.primaryLight}" },
+        "color":              { "$type": "color",     "$value": "{semantic.color.text.primary}" },
+        "padding": {
+          "y": { "$type": "dimension", "$value": "10px" },
+          "x": { "$type": "dimension", "$value": "16px" }
+        },
+        "fontSize":   { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" },
+        "fontWeight": { "$type": "number",    "$value": "600" },
+        "dividerColor": { "$type": "color",   "$value": "{semantic.color.divider}" }
+      },
+
+      "search": {
+        "borderColor": { "$type": "color", "$value": "{semantic.color.divider}" }
+      },
+
+      "item": {
+        "checkboxGap": { "$type": "dimension", "$value": "8px" }
+      },
+
+      "controls": {
+        "gap":   { "$type": "dimension", "$value": "8px" },
+        "width": { "$type": "dimension", "$value": "48px" }
+      },
+
+      "count": {
+        "color":    { "$type": "color",     "$value": "{semantic.color.text.secondary}" },
+        "fontSize": { "$type": "dimension", "$value": "{semantic.typography.caption.fontSize}" }
+      },
+
+      "empty": {
+        "color":    { "$type": "color",     "$value": "{semantic.color.text.secondary}" },
+        "fontSize": { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" }
+      },
+
+      "focusRing": {
+        "color":  { "$type": "color",     "$value": "{semantic.color.focus.ring}" },
+        "width":  { "$type": "dimension", "$value": "2px" },
+        "offset": { "$type": "dimension", "$value": "2px" }
+      }
+
+    }
+  }
+}

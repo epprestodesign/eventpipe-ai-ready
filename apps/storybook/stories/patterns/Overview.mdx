@@ -1,0 +1,60 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Patterns/Overview" />
+
+<div style={{ maxWidth: 760, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Patterns
+
+Patterns are recurring UI solutions composed from EventPipe components. They represent the recommended approach for common product scenarios — not prescriptive templates, but proven compositions with documented rationale.
+
+---
+
+## Pattern areas
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, margin: '24px 0 40px' }}>
+  {[
+    {
+      title: 'Overlay pattern',
+      desc: 'The canonical rules for portal-rendered surfaces: PAPER_SX, z-index layering, dismissal taxonomy, focus management, backdrop composability.',
+      tag: 'Architecture',
+    },
+    {
+      title: 'Loading patterns',
+      desc: 'When to use Skeleton vs CircularProgress vs LinearProgress vs Backdrop. Decision table with use cases.',
+      tag: 'Feedback',
+    },
+    {
+      title: 'Form patterns',
+      desc: 'TextField + Select + Autocomplete composition. Validation state wiring. Error message placement.',
+      tag: 'Inputs',
+    },
+    {
+      title: 'Navigation patterns',
+      desc: 'Tabs + Breadcrumbs + Pagination working together. When to use each navigation component.',
+      tag: 'Navigation',
+    },
+    {
+      title: 'Empty states',
+      desc: 'What to show when there is no data. Guidance on content, imagery, and calls to action.',
+      tag: 'Content',
+    },
+  ].map(p => (
+    <div key={p.title} style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 8, padding: '20px' }}>
+      <div style={{ fontSize: 11, fontWeight: 600, color: '#0057FF', background: '#EFF6FF', padding: '2px 8px', borderRadius: 10, display: 'inline-block', marginBottom: 10 }}>{p.tag}</div>
+      <div style={{ fontWeight: 700, fontSize: 15, color: '#111827', marginBottom: 6 }}>{p.title}</div>
+      <p style={{ margin: 0, fontSize: 13, color: '#4B5563', lineHeight: 1.5 }}>{p.desc}</p>
+    </div>
+  ))}
+</div>
+
+---
+
+## Principles for composing patterns
+
+1. **Use components as-is.** Patterns are compositions of existing components — they don't require modifying component internals.
+2. **Token-only customization.** Adjustments to spacing, color, or size within a pattern must be made through tokens or `sx` props — never inline hardcoded values.
+3. **Accessibility carries through.** Each component in a pattern maintains its own accessibility contract. The pattern author is responsible for ensuring composition-level semantics (e.g., `aria-labelledby` on a Dialog inside a pattern).
+4. **Patterns are documented, not enforced.** Teams may deviate from patterns for valid product reasons, but deviations should be documented.
+
+</div>

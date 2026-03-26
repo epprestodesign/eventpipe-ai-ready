@@ -1,0 +1,85 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Tools/System readiness" />
+
+<div style={{ maxWidth: 860, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# System readiness
+
+---
+
+## Readiness summary
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, margin: '24px 0' }}>
+  {[
+    { label: 'Components shipped', value: '43', color: '#0057FF' },
+    { label: 'Token coverage', value: '100%', color: '#065F46' },
+    { label: 'QA gates passing', value: '6 / 6', color: '#065F46' },
+    { label: 'Accessibility', value: 'WCAG 2.1 AA', color: '#065F46' },
+    { label: 'Deviations registered', value: '21', color: '#92400E' },
+    { label: 'Wave 3 remaining', value: '3C only', color: '#6B7280' },
+  ].map(item => (
+    <div key={String(item.label)} style={{ background: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: 8, padding: '20px' }}>
+      <div style={{ fontSize: 26, fontWeight: 700, color: item.color }}>{item.value}</div>
+      <div style={{ fontSize: 13, color: '#6B7280', marginTop: 6 }}>{item.label}</div>
+    </div>
+  ))}
+</div>
+
+---
+
+## Token system health
+
+| Layer | Files | Status |
+|---|---|---|
+| Primitive tokens | `packages/tokens/src/primitive/` | ✓ Stable |
+| Semantic tokens (light) | `packages/tokens/src/semantic/` | ✓ Stable |
+| Semantic elevation | `packages/tokens/src/semantic/elevation.json` | ✓ 6 levels: surface / raised / overlay / panel / modal / tooltip |
+| Semantic tokens (dark) | `packages/tokens/src/semantic/dark.json` | ✓ Stable |
+| Component tokens | `packages/tokens/src/component/` | ✓ 29 components covered |
+| CSS output | `packages/tokens/dist/tokens.light.css` | ✓ Auto-generated |
+| Token tests | `packages/tokens/src/validate/` | ✓ 7/7 passing |
+
+---
+
+## Architecture contracts
+
+| Contract | Document | Status |
+|---|---|---|
+| Component build workflow | `docs/contracts/component-build-workflow.md` | ✓ Current |
+| Overlay pattern | `docs/contracts/overlay-pattern.md` | ✓ Current |
+| Product system rules | `docs/contracts/product-system-rules.md` | ✓ 11 rules + 6 patterns + audit |
+| Shared props vocabulary | `docs/contracts/shared-props.md` | ✓ Current |
+| Icon usage | `docs/contracts/icon-usage.md` | ✓ Current |
+| CI gates | `docs/contracts/ci-gates.md` | ✓ 6 gates defined |
+
+---
+
+## Known limitations
+
+| Area | Detail |
+|---|---|
+| Dark mode | Token infrastructure complete (including elevation + distinct info color). Full dark theme pass is Wave 5 scope. |
+| RTL | Not supported. MUI provides utilities; adaptation is post-Wave-3. |
+| Animation | Full motion token system not yet defined. |
+| Wave 3B | FilterBar + FilterChip + useDebounce complete. |
+| Wave 3C | DatePicker pending. |
+| Wave 4A | TransferList complete. |
+| Wave 4B | Stepper complete. |
+| Wave 4C | DatePicker complete. Timeline, ConfirmDialog pending. |
+| DataTable advanced | Column resize, virtualization, drag-and-drop deferred to Wave 5 (DataGrid). |
+
+---
+
+## Full health check
+
+```bash
+pnpm --filter @eventpipe/tokens build
+pnpm --filter @eventpipe/tokens test
+pnpm --filter @eventpipe/ui typecheck
+pnpm --filter @eventpipe/ui build
+pnpm --filter storybook typecheck
+pnpm --filter storybook build
+```
+
+</div>

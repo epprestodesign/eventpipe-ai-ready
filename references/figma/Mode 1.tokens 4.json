@@ -1,0 +1,27 @@
+{
+  "borderRadius": {
+    "$type": "number",
+    "$value": 4,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:835:93266",
+      "com.figma.scopes": [
+        "CORNER_RADIUS"
+      ],
+      "com.figma.isOverride": true
+    }
+  },
+  "none": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:847:93183",
+      "com.figma.scopes": [
+        "CORNER_RADIUS"
+      ],
+      "com.figma.isOverride": true
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Mode 1"
+  }
+}

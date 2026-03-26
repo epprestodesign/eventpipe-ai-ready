@@ -1,0 +1,20 @@
+{
+  "component": {
+    "linear-progress": {
+      "height": { "$type": "dimension", "$value": "4px" },
+      "borderRadius": { "$type": "dimension", "$value": "{semantic.radius.xs}" },
+      "track": {
+        "color": { "$type": "color", "$value": "{semantic.color.action.focus}" }
+      },
+      "bar": {
+        "primary":   { "$type": "color", "$value": "{semantic.color.brand.primary}" },
+        "secondary": { "$type": "color", "$value": "{semantic.color.brand.secondary}" },
+        "error":     { "$type": "color", "$value": "{semantic.color.status.error}" },
+        "warning":   { "$type": "color", "$value": "{semantic.color.status.warning}" },
+        "info":      { "$type": "color", "$value": "{semantic.color.status.info}" },
+        "success":   { "$type": "color", "$value": "{semantic.color.status.success}" },
+        "neutral":   { "$type": "color", "$value": "{semantic.color.neutral.default}" }
+      }
+    }
+  }
+}

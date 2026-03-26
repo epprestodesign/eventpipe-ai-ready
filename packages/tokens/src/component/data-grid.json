@@ -1,0 +1,29 @@
+{
+  "component": {
+    "data-grid": {
+
+      "container": {
+        "background":   { "$type": "color",     "$value": "{semantic.color.background.paper}" },
+        "borderColor":  { "$type": "color",     "$value": "{semantic.color.divider}" },
+        "borderRadius": { "$type": "dimension", "$value": "{semantic.radius.lg}" }
+      },
+
+      "footer": {
+        "paddingY":    { "$type": "dimension", "$value": "8px" },
+        "paddingX":    { "$type": "dimension", "$value": "16px" },
+        "borderColor": { "$type": "color",     "$value": "{semantic.color.divider}" }
+      },
+
+      "empty": {
+        "paddingY":   { "$type": "dimension", "$value": "48px" },
+        "color":      { "$type": "color",     "$value": "{semantic.color.text.secondary}" },
+        "fontSize":   { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" }
+      },
+
+      "actionsColumn": {
+        "width": { "$type": "dimension", "$value": "56px" }
+      }
+
+    }
+  }
+}

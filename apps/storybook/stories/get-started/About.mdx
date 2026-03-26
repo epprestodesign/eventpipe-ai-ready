@@ -1,0 +1,109 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Get started/About" />
+
+<div style={{ maxWidth: 760, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# About the design system
+
+The EventPipe Design System is the single source of truth for UI patterns, components, and tokens across EventPipe products.
+
+---
+
+## Mission
+
+> Build a token-driven, accessible component library that lets product teams ship consistent, high-quality interfaces without reinventing shared patterns.
+
+The design system is not a constraint — it is a shared vocabulary. When teams share components and tokens, they can focus effort on product differentiation rather than recreating buttons and dialogs.
+
+---
+
+## Build waves
+
+The system was built in structured waves, each with a QA gate before the next phase begins.
+
+<div style={{ margin: '24px 0' }}>
+  {[
+    {
+      wave: 'Wave 1',
+      status: '✅ Complete',
+      color: '#D1FAE5',
+      border: '#6EE7B7',
+      components: 'Button, TextField, Select, Autocomplete, Avatar, Badge, Tooltip, Divider, Menu, Card, Checkbox, Radio, Switch, List, Chip, Pagination, Alert, Icon',
+      count: 18,
+    },
+    {
+      wave: 'Wave 2A',
+      status: '✅ Complete',
+      color: '#D1FAE5',
+      border: '#6EE7B7',
+      components: 'Skeleton, CircularProgress, LinearProgress, Backdrop',
+      count: 4,
+    },
+    {
+      wave: 'Wave 2B',
+      status: '✅ Complete',
+      color: '#D1FAE5',
+      border: '#6EE7B7',
+      components: 'Dialog, Snackbar',
+      count: 2,
+    },
+    {
+      wave: 'Wave 2C',
+      status: '✅ Complete',
+      color: '#D1FAE5',
+      border: '#6EE7B7',
+      components: 'Tabs, Breadcrumbs, Link',
+      count: 3,
+    },
+    {
+      wave: 'Wave 2D',
+      status: '✅ Complete',
+      color: '#D1FAE5',
+      border: '#6EE7B7',
+      components: 'Drawer, Popover',
+      count: 2,
+    },
+  ].map(w => (
+    <div key={w.wave} style={{ display: 'flex', gap: 16, alignItems: 'flex-start', marginBottom: 12, background: '#fff', border: '1px solid #E5E7EB', borderRadius: 8, padding: '16px 20px' }}>
+      <div style={{ minWidth: 80 }}>
+        <div style={{ fontWeight: 700, fontSize: 14, color: '#111827' }}>{w.wave}</div>
+        <div style={{ marginTop: 4, fontSize: 12, fontWeight: 600, color: '#059669', background: w.color, border: `1px solid ${w.border}`, borderRadius: 20, padding: '2px 8px', display: 'inline-block' }}>{w.status}</div>
+      </div>
+      <div>
+        <div style={{ fontSize: 13, color: '#4B5563', lineHeight: 1.5 }}>{w.components}</div>
+        <div style={{ fontSize: 12, color: '#9CA3AF', marginTop: 4 }}>{w.count} component{w.count !== 1 ? 's' : ''}</div>
+      </div>
+    </div>
+  ))}
+</div>
+
+---
+
+## Architecture decisions
+
+| Decision | Choice | Rationale |
+|---|---|---|
+| Base library | MUI v5 | Battle-tested behavior, strong a11y, wide ecosystem |
+| Token format | Style Dictionary + custom transforms | Produces CSS custom properties compatible with all rendering targets |
+| Token layers | Primitive → Semantic → Component | Enforces separation of raw values, design decisions, and component defaults |
+| Styling | `styled()` + `PaperProps.sx` for portals | MUI's emotion-based API; portal surfaces require CSS vars (not ancestor selectors) |
+| Language | TypeScript + React 18 | Full type safety; all props typed with explicit interfaces |
+
+---
+
+## What is and isn't the design system
+
+**Is:**
+- Components in `@eventpipe/ui`
+- Tokens in `@eventpipe/tokens`
+- Contracts in `docs/contracts/`
+- Patterns in `docs/specs/`
+
+**Is not:**
+- Application layout code
+- Business logic
+- Page-level routing
+- Backend API clients
+
+</div>

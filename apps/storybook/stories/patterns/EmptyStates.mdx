@@ -1,0 +1,122 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Patterns/Empty states" />
+
+<div style={{ maxWidth: 760, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Empty states
+
+Guidance for designing and writing empty states in EventPipe product surfaces.
+
+---
+
+## What is an empty state?
+
+An empty state is any surface where the expected content is absent. This includes:
+
+- A brand-new account with no data yet
+- A filtered list that returned no results
+- A feature the user hasn't set up
+- An error that prevented content from loading
+
+Each scenario has a different cause and a different appropriate response.
+
+---
+
+## Decision table
+
+| Scenario | Primary action | Secondary action |
+|---|---|---|
+| First use (no data ever created) | Create CTA — `Button variant="contained"` | None |
+| Filter / search returned nothing | Clear filter — `Button variant="outlined"` | Adjust search |
+| Feature not configured | Set up CTA | Link to docs |
+| Permission — no access | None (informational) | Contact admin link |
+| Error — load failed | Retry — `Button variant="outlined"` | None |
+
+---
+
+## Anatomy
+
+```
+   [ Illustration / Icon ]          ← Optional. Use for first-use states only.
+
+   No events yet                    ← Heading: short, specific (not "No data")
+
+   Create your first event to       ← Body: 1–2 sentences max. Explain why
+   start managing your calendar.       the state exists and what to do.
+
+   [ Create event ]                 ← Primary CTA (if actionable)
+```
+
+---
+
+## Content rules
+
+### Heading
+- Be specific: **"No events yet"** not **"Nothing here"**
+- Do not use exclamation marks
+- 3–5 words is ideal; never more than 8
+
+### Body text
+- Explain what to do, not just what is missing
+- Write in second person: "You can create…" not "Users can create…"
+- If the cause is a filter or search: tell them how to see results
+
+### Call to action
+- Match the button label to the heading verb: if heading is "No events yet" → CTA is "Create event"
+- Do not use generic labels like "Get started" or "Click here"
+- One CTA per empty state — two competing actions undermine decision-making
+
+### Illustration / Icon
+- Only use for **first-use** states — not for filter/error states
+- Use a conceptually relevant icon at `size="xl"` with `color="neutral"` styling
+- Do not use illustration for destructive or error states
+
+---
+
+## Composition example
+
+```tsx
+// First-use empty state
+<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, padding: '64px 24px', textAlign: 'center' }}>
+  <Icon name="calendar" size="xl" label="No events" />
+  <div>
+    <Typography variant="h6" gutterBottom>No events yet</Typography>
+    <Typography variant="body2" color="text.secondary">
+      Create your first event to start managing your calendar.
+    </Typography>
+  </div>
+  <Button variant="contained" color="primary">
+    Create event
+  </Button>
+</div>
+
+// Filter empty state (no illustration)
+<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, padding: '48px 24px', textAlign: 'center' }}>
+  <Typography variant="h6">No results for "summer gala"</Typography>
+  <Typography variant="body2" color="text.secondary">
+    Try adjusting your search or clearing filters.
+  </Typography>
+  <Button variant="outlined" onClick={clearFilters}>Clear filters</Button>
+</div>
+
+// Error empty state
+<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, padding: '48px 24px', textAlign: 'center' }}>
+  <Typography variant="h6">Couldn't load events</Typography>
+  <Typography variant="body2" color="text.secondary">
+    There was a problem loading your events. Try again.
+  </Typography>
+  <Button variant="outlined" onClick={retry}>Retry</Button>
+</div>
+```
+
+---
+
+## Rules
+
+- Never show a blank white area with no message — always acknowledge the state
+- Do not mix error and first-use patterns (an error is not a feature discovery moment)
+- Do not add marketing copy to error empty states
+- Empty states inside a Dialog or Drawer: omit the illustration, reduce padding
+
+</div>

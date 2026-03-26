@@ -1,0 +1,60 @@
+{
+  "xl": {
+    "$type": "number",
+    "$value": 1536,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:833:93492",
+      "com.figma.scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "com.figma.isOverride": true
+    }
+  },
+  "lg": {
+    "$type": "number",
+    "$value": 1200,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:847:93177",
+      "com.figma.scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "com.figma.isOverride": true
+    }
+  },
+  "md": {
+    "$type": "number",
+    "$value": 900,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:847:93178",
+      "com.figma.scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "com.figma.isOverride": true
+    }
+  },
+  "sm": {
+    "$type": "number",
+    "$value": 600,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:847:93179",
+      "com.figma.scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "com.figma.isOverride": true
+    }
+  },
+  "xs": {
+    "$type": "number",
+    "$value": 444,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:847:93180",
+      "com.figma.scopes": [
+        "WIDTH_HEIGHT"
+      ],
+      "com.figma.isOverride": true
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Mode 1"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "component": {
+    "autocomplete": {
+      "dropdown": {
+        "background":   { "$type": "color",     "$value": "{semantic.color.background.paper}" },
+        "borderRadius": { "$type": "dimension",  "$value": "{semantic.radius.lg}" },
+        "maxHeight":    { "$type": "dimension",  "$value": "300px" },
+
+        "shadow": {
+          "$type": "shadow",
+          "$value": [
+            { "offsetX": "0px", "offsetY": "4px", "blur": "6px",  "spread": "-1px", "color": "rgba(0,0,0,0.10)" },
+            { "offsetX": "0px", "offsetY": "2px", "blur": "4px",  "spread": "-2px", "color": "rgba(0,0,0,0.06)" }
+          ]
+        }
+      },
+
+      "option": {
+        "color":                   { "$type": "color", "$value": "{semantic.color.text.primary}" },
+        "colorDisabled":           { "$type": "color", "$value": "{semantic.color.text.disabled}" },
+
+        "background":              { "$type": "color", "$value": "transparent" },
+        "backgroundHover":         { "$type": "color", "$value": "{semantic.color.action.hover}" },
+        "backgroundFocus":         { "$type": "color", "$value": "{semantic.color.action.focus}" },
+        "backgroundSelected":      { "$type": "color", "$value": "{semantic.color.action.selected}" },
+        "backgroundSelectedHover": { "$type": "color", "$value": "{semantic.color.action.focus}" },
+        "backgroundDisabled":      { "$type": "color", "$value": "transparent" },
+
+        "fontSize": { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" },
+
+        "padding": {
+          "y": { "$type": "dimension", "$value": "8px" },
+          "x": { "$type": "dimension", "$value": "16px" }
+        }
+      },
+
+      "tag": {
+        "gap":     { "$type": "dimension", "$value": "4px" },
+        "marginY": { "$type": "dimension", "$value": "3px" }
+      },
+
+      "indicator": {
+        "size":  { "$type": "dimension", "$value": "20px" },
+        "color": { "$type": "color",     "$value": "{semantic.color.text.secondary}" }
+      },
+
+      "loading": {
+        "color":    { "$type": "color",     "$value": "{semantic.color.text.secondary}" },
+        "fontSize": { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" }
+      }
+    }
+  }
+}

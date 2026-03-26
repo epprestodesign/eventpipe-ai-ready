@@ -1,0 +1,147 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Patterns/Form patterns" />
+
+<div style={{ maxWidth: 760, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Form patterns
+
+Guidance for composing forms with EventPipe input components.
+
+---
+
+## Input component selection
+
+| Use case | Component |
+|---|---|
+| Short freeform text | `TextField` |
+| Long freeform text | `TextField multiline` |
+| Fixed set of options (≤7) | `Select` |
+| Fixed set with search | `Autocomplete` |
+| Multiple fixed-option selections | `Autocomplete multiple` |
+| Freeform + suggestions | `Autocomplete freeSolo` |
+| Boolean toggle | `Switch` (settings) / `Checkbox` (forms) |
+| One of N options | `RadioGroup` |
+| Filter chips | `Chip` (controlled) |
+
+---
+
+## Standard form layout
+
+```tsx
+<form onSubmit={handleSubmit}>
+  <TextField
+    label="Event name"
+    value={name}
+    onChange={(e) => setName(e.target.value)}
+    error={!!errors.name}
+    helperText={errors.name}
+    fullWidth
+    required
+  />
+
+  <Select
+    label="Category"
+    value={category}
+    onChange={(e) => setCategory(e.target.value)}
+    error={!!errors.category}
+    helperText={errors.category}
+    fullWidth
+    required
+  >
+    <MenuItem value="conference">Conference</MenuItem>
+    <MenuItem value="gala">Gala</MenuItem>
+    <MenuItem value="workshop">Workshop</MenuItem>
+  </Select>
+
+  <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end', marginTop: 24 }}>
+    <Button onClick={onCancel}>Cancel</Button>
+    <Button type="submit" variant="contained">Create event</Button>
+  </div>
+</form>
+```
+
+---
+
+## Validation state
+
+All form inputs expose `error` and `helperText` props. Validation runs on submit (not on blur) for most EventPipe forms to avoid premature error states.
+
+```tsx
+// Error state
+<TextField
+  label="Email"
+  error={!!emailError}
+  helperText={emailError || 'We\'ll send event updates here.'}
+/>
+
+// Success is shown by clearing the error — no explicit success prop needed
+```
+
+**Rules:**
+- Place error messages in `helperText` — not in alerts above the form
+- Use `error` only when the field value is invalid and the user has attempted to proceed
+- Required field markers: use `required` prop — MUI adds `*` to the label automatically
+
+---
+
+## Form in a Dialog
+
+The most common EventPipe form pattern: a Dialog containing a form with TextField/Select inputs and Dialog.Actions buttons.
+
+```tsx
+<Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" fullWidth maxWidth="sm">
+  <Dialog.Title id="form-dialog-title" onClose={handleClose}>
+    Create event
+  </Dialog.Title>
+  <Dialog.Content>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, paddingTop: 8 }}>
+      <TextField label="Event name" fullWidth required />
+      <Select label="Venue" fullWidth>
+        <MenuItem value="grand">Grand Ballroom</MenuItem>
+        <MenuItem value="rooftop">Rooftop Terrace</MenuItem>
+      </Select>
+      <TextField label="Date" type="date" fullWidth InputLabelProps={{ shrink: true }} />
+    </div>
+  </Dialog.Content>
+  <Dialog.Actions>
+    <Button onClick={handleClose}>Cancel</Button>
+    <Button variant="contained" onClick={handleSubmit}>Create</Button>
+  </Dialog.Actions>
+</Dialog>
+```
+
+**Rules:**
+- Add `paddingTop: 8` to the first child inside `Dialog.Content` — MUI reduces `DialogContent` top padding when it follows `DialogTitle`; the token enforces it, but visual breathing room from the title is still needed
+- Use `fullWidth maxWidth="sm"` for most form dialogs
+- Primary action goes last (right-most) in `Dialog.Actions`
+- Destructive actions use `color="error"` on the primary button
+
+---
+
+## Autocomplete patterns
+
+```tsx
+// Single select with search
+<Autocomplete
+  options={venues}
+  getOptionLabel={(v) => v.name}
+  renderInput={(params) => <TextField {...params} label="Venue" />}
+/>
+
+// Multi-select
+<Autocomplete
+  multiple
+  options={tags}
+  renderInput={(params) => <TextField {...params} label="Tags" />}
+/>
+
+// Free text + suggestions
+<Autocomplete
+  freeSolo
+  options={suggestions}
+  renderInput={(params) => <TextField {...params} label="Search events" />}
+/>
+```
+
+</div>

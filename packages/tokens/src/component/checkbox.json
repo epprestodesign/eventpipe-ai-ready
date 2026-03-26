@@ -1,0 +1,37 @@
+{
+  "component": {
+    "checkbox": {
+      "icon": {
+        "sm": { "$type": "dimension", "$value": "16px" },
+        "md": { "$type": "dimension", "$value": "20px" },
+        "lg": { "$type": "dimension", "$value": "24px" }
+      },
+
+      "color": {
+        "primary":   { "$type": "color", "$value": "{semantic.color.brand.primary}" },
+        "secondary": { "$type": "color", "$value": "{semantic.color.brand.secondary}" },
+        "error":     { "$type": "color", "$value": "{semantic.color.status.error}" },
+        "warning":   { "$type": "color", "$value": "{semantic.color.status.warning}" },
+        "info":      { "$type": "color", "$value": "{semantic.color.status.info}" },
+        "success":   { "$type": "color", "$value": "{semantic.color.status.success}" },
+        "neutral":   { "$type": "color", "$value": "{semantic.color.neutral.default}" }
+      },
+
+      "unchecked": {
+        "border":  { "$type": "color", "$value": "{semantic.color.border.strong}" },
+        "hoverBg": { "$type": "color", "$value": "{semantic.color.action.hover}" }
+      },
+
+      "disabled": {
+        "color":  { "$type": "color", "$value": "{semantic.color.text.disabled}" },
+        "border": { "$type": "color", "$value": "{semantic.color.border.default}" }
+      },
+
+      "focusRing": {
+        "color":  { "$type": "color",     "$value": "{semantic.color.focus.ring}" },
+        "width":  { "$type": "dimension", "$value": "2px" },
+        "offset": { "$type": "dimension", "$value": "2px" }
+      }
+    }
+  }
+}

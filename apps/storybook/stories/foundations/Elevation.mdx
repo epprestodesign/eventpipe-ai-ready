@@ -1,0 +1,81 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Elevation" />
+
+<div style={{ maxWidth: 760, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Elevation
+
+Elevation communicates the z-axis position of a surface. In EventPipe, elevation is expressed as multi-layer `box-shadow` tokens and maps to MUI's elevation scale.
+
+---
+
+## Elevation levels in use
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: 20, margin: '24px 0 40px' }}>
+  {[
+    {
+      level: 'Elevation 0',
+      shadow: 'none',
+      components: 'Cards (flat variant), inline surfaces',
+      desc: 'No shadow. Used for flat, non-floating surfaces.',
+    },
+    {
+      level: 'Elevation 4 – 6',
+      shadow: '0px 2px 4px -1px rgba(0,0,0,0.10), 0px 4px 6px 0px rgba(0,0,0,0.07)',
+      components: 'Menu, Popover (elevation-8)',
+      desc: 'Low elevation. Dropdowns and popovers that sit close to the triggering element.',
+    },
+    {
+      level: 'Elevation 8',
+      shadow: '0px 5px 5px -3px rgba(0,0,0,0.20), 0px 8px 10px 1px rgba(0,0,0,0.14), 0px 3px 14px 2px rgba(0,0,0,0.12)',
+      components: 'Popover',
+      desc: 'Mid elevation. Anchored overlays that need clear separation from page content.',
+    },
+    {
+      level: 'Elevation 16',
+      shadow: '0px 8px 10px -5px rgba(0,0,0,0.20), 0px 16px 24px 2px rgba(0,0,0,0.14), 0px 6px 30px 5px rgba(0,0,0,0.12)',
+      components: 'Drawer',
+      desc: 'High elevation. Panels that slide over the full viewport.',
+    },
+    {
+      level: 'Elevation 24',
+      shadow: '0px 11px 15px -7px rgba(0,0,0,0.20), 0px 24px 38px 3px rgba(0,0,0,0.14), 0px 9px 46px 8px rgba(0,0,0,0.12)',
+      components: 'Dialog',
+      desc: 'Maximum elevation. Modals that demand full user attention.',
+    },
+  ].map(e => (
+    <div key={e.level} style={{ display: 'flex', gap: 24, alignItems: 'flex-start' }}>
+      <div style={{
+        width: 80, height: 80, borderRadius: 8, background: '#fff', flexShrink: 0,
+        boxShadow: e.shadow,
+        border: e.shadow === 'none' ? '1px solid #E5E7EB' : 'none',
+      }} />
+      <div>
+        <div style={{ fontWeight: 700, fontSize: 14, color: '#111827', marginBottom: 4 }}>{e.level}</div>
+        <p style={{ margin: '0 0 6px', fontSize: 13, color: '#4B5563', lineHeight: 1.5 }}>{e.desc}</p>
+        <div style={{ fontSize: 12, color: '#9CA3AF' }}>Used by: <strong style={{ color: '#6B7280' }}>{e.components}</strong></div>
+      </div>
+    </div>
+  ))}
+</div>
+
+---
+
+## Rules
+
+- **Never override z-index with tokens.** Z-index values are structural constants owned by MUI's theme layer. EventPipe does not define `z-index` tokens.
+- **MUI z-index stack:**
+
+| Layer | z-index | Components |
+|---|---|---|
+| App Bar | 1100 | AppBar, TopNav |
+| Drawer | 1200 | Drawer |
+| Modal / Menu | 1300 | Dialog, Menu, Popover, Backdrop |
+| Snackbar | 1400 | Snackbar |
+| Tooltip | 1500 | Tooltip |
+
+- Shadow tokens are defined as `$type: shadow` in token JSON and compile to `box-shadow` CSS values.
+- All portal surfaces (Dialog, Drawer, Popover, Menu) receive their shadow via `PaperProps.sx` using `PAPER_SX` — not via `styled()` ancestor selectors, which cannot reach portal content.
+
+</div>

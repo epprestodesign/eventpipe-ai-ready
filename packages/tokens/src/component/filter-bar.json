@@ -1,0 +1,50 @@
+{
+  "component": {
+    "filter-bar": {
+      "background":   { "$type": "color",     "$value": "transparent" },
+      "borderRadius": { "$type": "dimension", "$value": "{semantic.radius.sm}" },
+
+      "padding": {
+        "sm": {
+          "y": { "$type": "dimension", "$value": "8px"  },
+          "x": { "$type": "dimension", "$value": "0px"  }
+        },
+        "md": {
+          "y": { "$type": "dimension", "$value": "12px" },
+          "x": { "$type": "dimension", "$value": "0px"  }
+        },
+        "lg": {
+          "y": { "$type": "dimension", "$value": "16px" },
+          "x": { "$type": "dimension", "$value": "0px"  }
+        }
+      },
+
+      "gap": {
+        "sm": { "$type": "dimension", "$value": "8px"  },
+        "md": { "$type": "dimension", "$value": "12px" },
+        "lg": { "$type": "dimension", "$value": "16px" }
+      },
+
+      "chipGap": {
+        "sm": { "$type": "dimension", "$value": "6px"  },
+        "md": { "$type": "dimension", "$value": "8px"  },
+        "lg": { "$type": "dimension", "$value": "10px" }
+      },
+
+      "search": {
+        "minWidth": { "$type": "dimension", "$value": "180px" },
+        "maxWidth": { "$type": "dimension", "$value": "320px" }
+      },
+
+      "divider": {
+        "color":  { "$type": "color",     "$value": "{semantic.color.divider}" },
+        "height": { "$type": "dimension", "$value": "20px" }
+      },
+
+      "count": {
+        "color":    { "$type": "color",     "$value": "{semantic.color.text.secondary}" },
+        "fontSize": { "$type": "dimension", "$value": "{semantic.typography.caption.fontSize}" }
+      }
+    }
+  }
+}

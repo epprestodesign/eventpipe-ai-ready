@@ -1,0 +1,11 @@
+{
+  "primitive": {
+    "breakpoint": {
+      "xs": { "$type": "dimension", "$value": "444px" },
+      "sm": { "$type": "dimension", "$value": "600px" },
+      "md": { "$type": "dimension", "$value": "900px" },
+      "lg": { "$type": "dimension", "$value": "1200px" },
+      "xl": { "$type": "dimension", "$value": "1536px" }
+    }
+  }
+}

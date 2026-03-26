@@ -1,0 +1,89 @@
+{
+  "component": {
+    "table": {
+      "background":   { "$type": "color",     "$value": "{semantic.color.background.paper}" },
+      "borderColor":  { "$type": "color",     "$value": "{semantic.color.divider}" },
+      "borderRadius": { "$type": "dimension", "$value": "{semantic.radius.sm}" },
+
+      "header": {
+        "background": { "$type": "color",     "$value": "{semantic.color.neutral.lighter}" },
+        "color":      { "$type": "color",     "$value": "{semantic.color.text.primary}" },
+        "fontSize":   { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" },
+        "fontWeight": { "$type": "number",    "$value": "600" },
+
+        "padding": {
+          "sm": {
+            "y": { "$type": "dimension", "$value": "8px"  },
+            "x": { "$type": "dimension", "$value": "12px" }
+          },
+          "md": {
+            "y": { "$type": "dimension", "$value": "12px" },
+            "x": { "$type": "dimension", "$value": "16px" }
+          },
+          "lg": {
+            "y": { "$type": "dimension", "$value": "16px" },
+            "x": { "$type": "dimension", "$value": "20px" }
+          }
+        },
+
+        "sortIcon": {
+          "color":       { "$type": "color", "$value": "{semantic.color.text.disabled}" },
+          "colorActive": { "$type": "color", "$value": "{semantic.color.brand.primary}" }
+        }
+      },
+
+      "row": {
+        "background":              { "$type": "color", "$value": "transparent" },
+        "backgroundHover":         { "$type": "color", "$value": "{semantic.color.action.hover}" },
+        "backgroundSelected":      { "$type": "color", "$value": "{semantic.color.action.selected}" },
+        "backgroundSelectedHover": { "$type": "color", "$value": "{semantic.color.action.focus}" },
+        "borderColor":             { "$type": "color", "$value": "{semantic.color.divider}" }
+      },
+
+      "cell": {
+        "color": { "$type": "color", "$value": "{semantic.color.text.primary}" },
+
+        "fontSize": {
+          "sm": { "$type": "dimension", "$value": "{semantic.typography.caption.fontSize}" },
+          "md": { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" },
+          "lg": { "$type": "dimension", "$value": "{semantic.typography.body1.fontSize}" }
+        },
+
+        "padding": {
+          "sm": {
+            "y": { "$type": "dimension", "$value": "6px"  },
+            "x": { "$type": "dimension", "$value": "12px" }
+          },
+          "md": {
+            "y": { "$type": "dimension", "$value": "10px" },
+            "x": { "$type": "dimension", "$value": "16px" }
+          },
+          "lg": {
+            "y": { "$type": "dimension", "$value": "14px" },
+            "x": { "$type": "dimension", "$value": "20px" }
+          }
+        }
+      },
+
+      "paddingCheckbox": {
+        "y": { "$type": "dimension", "$value": "4px" },
+        "x": { "$type": "dimension", "$value": "8px" }
+      },
+
+      "toolbar": {
+        "background":         { "$type": "color", "$value": "transparent" },
+        "selectedBackground": { "$type": "color", "$value": "{semantic.color.brand.primaryLight}" },
+        "padding": {
+          "y": { "$type": "dimension", "$value": "8px" },
+          "x": { "$type": "dimension", "$value": "0px" }
+        }
+      },
+
+      "focusRing": {
+        "color":  { "$type": "color",     "$value": "{semantic.color.focus.ring}" },
+        "width":  { "$type": "dimension", "$value": "2px" },
+        "offset": { "$type": "dimension", "$value": "2px" }
+      }
+    }
+  }
+}

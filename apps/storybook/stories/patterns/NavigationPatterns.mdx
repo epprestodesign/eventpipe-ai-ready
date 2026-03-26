@@ -1,0 +1,152 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Patterns/Navigation patterns" />
+
+<div style={{ maxWidth: 760, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Navigation patterns
+
+Guidance for composing navigation with EventPipe components.
+
+---
+
+## Component selection
+
+| Use case | Component |
+|---|---|
+| Sub-page sections on a single page | `Tabs` |
+| Location hierarchy (where am I) | `Breadcrumbs` |
+| Inline text navigation | `Link` |
+| Multi-page number navigation | `Pagination` |
+| Action/option menu triggered by a button | `Menu` |
+| Full navigation panel (mobile nav, sidebar) | `Drawer` |
+
+---
+
+## Tabs
+
+Use Tabs for **same-page section switching** where all content is loaded. Do not use Tabs as a substitute for routing between pages.
+
+```tsx
+const [active, setActive] = React.useState('overview');
+
+<Tabs value={active} onChange={(_, v) => setActive(v as string)}>
+  <Tab label="Overview" value="overview" />
+  <Tab label="Attendees" value="attendees" />
+  <Tab label="Schedule" value="schedule" />
+</Tabs>
+
+<Tabs.Panel value={active} index="overview">
+  <EventOverview />
+</Tabs.Panel>
+<Tabs.Panel value={active} index="attendees">
+  <AttendeeList />
+</Tabs.Panel>
+```
+
+**Rules:**
+- Use `value` strings (not indices) so labels can reorder without breaking state
+- Use `keepMounted` on panels that are expensive to remount
+- Tabs with icons: use `iconPosition="start"` for horizontal readability
+
+---
+
+## Breadcrumbs
+
+Use Breadcrumbs to orient users in deep hierarchies (3+ levels). Do not use for flat structures.
+
+```tsx
+<Breadcrumbs aria-label="breadcrumb">
+  <BreadcrumbLink href="/">Home</BreadcrumbLink>
+  <BreadcrumbLink href="/events">Events</BreadcrumbLink>
+  <BreadcrumbLink href="/events/2026">2026 Season</BreadcrumbLink>
+  <BreadcrumbItem>Summer Gala</BreadcrumbItem>
+</Breadcrumbs>
+```
+
+**Rules:**
+- Last item is always `BreadcrumbItem` (non-interactive, `aria-current="page"`)
+- Preceding items are always `BreadcrumbLink`
+- Use `maxItems` (default 8) + `itemsBeforeCollapse`/`itemsAfterCollapse` for very deep paths
+- Place above the page title, not below it
+
+---
+
+## Breadcrumbs + Tabs together
+
+A common EventPipe pattern: Breadcrumbs for location, Tabs for section.
+
+```
+                           [Home > Events > Summer Gala]   ← Breadcrumbs
+Summer Gala 2026                                           ← Page heading
+[Overview] [Attendees] [Schedule] [Settings]               ← Tabs
+─────────────────────────────────────────────────────
+Tab content area
+```
+
+---
+
+## Pagination
+
+Use Pagination for navigating multi-page lists. Always pair with a page size control.
+
+```tsx
+<Pagination
+  count={totalPages}
+  page={currentPage}
+  onChange={(_, page) => setCurrentPage(page)}
+  variant="outlined"
+  shape="rounded"
+/>
+```
+
+**Rules:**
+- Expose `count` (total pages), `page` (current, 1-indexed)
+- Place below the list content, right-aligned or centered
+- Use `size="small"` on mobile or in compact layouts
+
+---
+
+## Link
+
+Use `Link` for inline navigation within body text. Do not use `Link` as a substitute for a Button.
+
+```tsx
+// ✅ Inline contextual navigation
+<p>
+  View all <Link href="/events">upcoming events</Link> or <Link href="/venues">browse venues</Link>.
+</p>
+
+// ✅ External link
+<Link href="https://..." target="_blank" rel="noopener noreferrer">
+  EventPipe documentation
+</Link>
+
+// ❌ Not for primary CTAs — use Button instead
+<Link href="/create">Create event</Link>  {/* ← use Button */}
+```
+
+---
+
+## Menu
+
+Use Menu for contextual actions triggered by a button (typically an ellipsis or chevron icon).
+
+```tsx
+const [anchor, setAnchor] = React.useState<HTMLElement | null>(null);
+
+<Button onClick={(e) => setAnchor(e.currentTarget)}>Actions</Button>
+<Menu anchorEl={anchor} open={Boolean(anchor)} onClose={() => setAnchor(null)}>
+  <MenuItem onClick={handleEdit}>Edit event</MenuItem>
+  <MenuItem onClick={handleDuplicate}>Duplicate</MenuItem>
+  <MenuDivider />
+  <MenuItem onClick={handleDelete}>Delete event</MenuItem>
+</Menu>
+```
+
+**Rules:**
+- Use `MenuDivider` to group related actions
+- Destructive actions go last, after a divider
+- Use `size="sm"` icon buttons for ellipsis triggers in tables and cards
+
+</div>

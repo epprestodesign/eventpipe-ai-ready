@@ -1,0 +1,66 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Border & Radius" />
+
+<div style={{ maxWidth: 760, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Border & Radius
+
+Border colors and corner radius values are defined as component-layer tokens. There is no shared global radius scale — each component specifies its own radius appropriate to its shape and visual weight.
+
+---
+
+## Border radius in use
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 16, margin: '24px 0 40px' }}>
+  {[
+    { label: '0px',  desc: 'Drawer (full-edge panels)',  r: '0px' },
+    { label: '2px',  desc: 'Focus rings, breadcrumb links', r: '2px' },
+    { label: '4px',  desc: 'Button, focus hit areas',    r: '4px' },
+    { label: '6px',  desc: 'Snackbar, Link focus',       r: '6px' },
+    { label: '8px',  desc: 'Menu, Popover, Tabs indicator', r: '8px' },
+    { label: '12px', desc: 'Dialog',                     r: '12px' },
+    { label: '50%',  desc: 'Radio focus ring (circular)', r: '50%' },
+  ].map(item => (
+    <div key={item.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12 }}>
+      <div style={{ width: 64, height: 64, background: 'var(--ep-semantic-color-brand-primary)', borderRadius: item.r, opacity: 0.15 }} />
+      <div style={{ width: 64, height: 64, background: 'transparent', border: '2px solid var(--ep-semantic-color-brand-primary)', borderRadius: item.r, marginTop: -76 }} />
+      <div style={{ textAlign: 'center' }}>
+        <div style={{ fontWeight: 700, fontSize: 14, color: '#111827' }}>{item.label}</div>
+        <div style={{ fontSize: 12, color: '#6B7280', marginTop: 2 }}>{item.desc}</div>
+      </div>
+    </div>
+  ))}
+</div>
+
+---
+
+## Border colors
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 8, margin: '16px 0 32px' }}>
+  {[
+    { name: 'Border Default', cssVar: '--ep-semantic-color-border-default', desc: 'Input borders, card outlines' },
+    { name: 'Border Strong',  cssVar: '--ep-semantic-color-border-strong',  desc: 'Emphasized separators, table borders' },
+    { name: 'Divider',        cssVar: '--ep-semantic-color-divider',        desc: 'List dividers, section separators' },
+  ].map(c => (
+    <div key={c.cssVar} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px', background: '#fff', border: '1px solid #E5E7EB', borderRadius: 8 }}>
+      <div style={{ width: 40, height: 40, borderRadius: 6, background: `var(${c.cssVar})`, border: '1px solid #E5E7EB', flexShrink: 0 }} />
+      <div>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#111827' }}>{c.name}</div>
+        <div style={{ fontSize: 11, color: '#9CA3AF', fontFamily: 'monospace', marginTop: 2 }}>{c.cssVar}</div>
+        <div style={{ fontSize: 11, color: '#6B7280', marginTop: 2 }}>{c.desc}</div>
+      </div>
+    </div>
+  ))}
+</div>
+
+---
+
+## Rules
+
+- **No shared global radius token** — each component defines its own radius as a component token.
+- Radius values follow the component's visual weight: modals and large surfaces use larger radii (12px); small interactive elements use smaller radii (4px).
+- `0px` radius is reserved for full-edge panels like Drawer, where the panel meets the viewport edge.
+- Focus ring radius is always **structural** (2px rounding) and never driven by design tokens — it is hardcoded as a convention across all interactive controls.
+
+</div>

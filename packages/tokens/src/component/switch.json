@@ -1,0 +1,76 @@
+{
+  "component": {
+    "switch": {
+      "color": {
+        "primary":   { "$type": "color", "$value": "{semantic.color.brand.primary}" },
+        "secondary": { "$type": "color", "$value": "{semantic.color.brand.secondary}" },
+        "error":     { "$type": "color", "$value": "{semantic.color.status.error}" },
+        "warning":   { "$type": "color", "$value": "{semantic.color.status.warning}" },
+        "info":      { "$type": "color", "$value": "{semantic.color.status.info}" },
+        "success":   { "$type": "color", "$value": "{semantic.color.status.success}" },
+        "neutral":   { "$type": "color", "$value": "{semantic.color.neutral.default}" }
+      },
+
+      "track": {
+        "colorUnchecked": { "$type": "color", "$value": "{semantic.color.neutral.medium}" }
+      },
+
+      "thumb": {
+        "color": { "$type": "color", "$value": "{semantic.color.surface.default}" }
+      },
+
+      "unchecked": {
+        "hoverBg": { "$type": "color", "$value": "{semantic.color.action.hover}" }
+      },
+
+      "disabled": {
+        "track":        { "$type": "color", "$value": "{semantic.color.border.default}" },
+        "trackChecked": { "$type": "color", "$value": "{semantic.color.text.disabled}" }
+      },
+
+      "size": {
+        "sm": {
+          "rootWidth":  { "$type": "dimension", "$value": "34px" },
+          "rootHeight": { "$type": "dimension", "$value": "20px" },
+          "thumbSize":  { "$type": "dimension", "$value": "14px" },
+          "thumbX":     { "$type": "dimension", "$value": "14px" },
+          "padding":    { "$type": "dimension", "$value": "3px" }
+        },
+        "md": {
+          "rootWidth":  { "$type": "dimension", "$value": "48px" },
+          "rootHeight": { "$type": "dimension", "$value": "28px" },
+          "thumbSize":  { "$type": "dimension", "$value": "20px" },
+          "thumbX":     { "$type": "dimension", "$value": "20px" },
+          "padding":    { "$type": "dimension", "$value": "4px" }
+        },
+        "lg": {
+          "rootWidth":  { "$type": "dimension", "$value": "60px" },
+          "rootHeight": { "$type": "dimension", "$value": "34px" },
+          "thumbSize":  { "$type": "dimension", "$value": "26px" },
+          "thumbX":     { "$type": "dimension", "$value": "26px" },
+          "padding":    { "$type": "dimension", "$value": "4px" }
+        }
+      },
+
+      "focusRing": {
+        "color":  { "$type": "color",     "$value": "{semantic.color.focus.ring}" },
+        "width":  { "$type": "dimension", "$value": "2px" },
+        "offset": { "$type": "dimension", "$value": "2px" }
+      },
+
+      "ios": {
+        "thumb": {
+          "shadow": {
+            "$type": "shadow",
+            "$value": [
+              { "offsetX": "0px", "offsetY": "1px", "blur": "3px", "spread": "1px", "color": "rgba(0,0,0,0.18)" }
+            ]
+          }
+        },
+        "track": {
+          "colorUnchecked": { "$type": "color", "$value": "{semantic.color.neutral.lighter}" }
+        }
+      }
+    }
+  }
+}

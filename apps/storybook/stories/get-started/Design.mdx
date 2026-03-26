@@ -1,0 +1,84 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Get started/Design" />
+
+<div style={{ maxWidth: 760, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Design
+
+How the EventPipe design system is structured for design work.
+
+---
+
+## Design principles
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16, margin: '24px 0 40px' }}>
+  {[
+    { title: 'Token-first', desc: 'Every visual decision — color, spacing, shadow, radius — is expressed as a named token. Design decisions live in tokens, not in component code.' },
+    { title: 'Accessible by default', desc: 'Focus rings, color contrast ratios, ARIA patterns, and live regions are built in. Accessibility is not optional.' },
+    { title: 'Composable', desc: 'Components are building blocks. Compound components (Dialog.Title, Tabs.Panel, Drawer.Header) provide structured flexibility without prescribing layouts.' },
+    { title: 'MUI-grounded', desc: 'The system builds on MUI v5 for battle-tested behavior (focus management, ARIA, responsive breakpoints) while overriding all visual output with EP tokens.' },
+  ].map(p => (
+    <div key={p.title} style={{ background: '#F9FAFB', borderRadius: 8, padding: '20px' }}>
+      <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 8, color: '#0057FF' }}>{p.title}</div>
+      <p style={{ margin: 0, fontSize: 13, color: '#4B5563', lineHeight: 1.6 }}>{p.desc}</p>
+    </div>
+  ))}
+</div>
+
+---
+
+## Token architecture for designers
+
+The system uses **three token layers**. Designers work at the **semantic** layer — meaningful names like `brand.primary` and `text.secondary` rather than hex values.
+
+```
+Primitive tokens    →   Raw values (#0057FF, 14px, 600)
+       ↓
+Semantic tokens     →   Named decisions (color.brand.primary, typography.body2.fontSize)
+       ↓
+Component tokens    →   Component-scoped (button.contained.primary.background)
+```
+
+**In practice for designers:** Reference semantic tokens when specifying colors in designs. Component tokens are managed by engineering and derive from semantic choices.
+
+---
+
+## Color system
+
+The color palette is split into:
+
+- **Brand** — primary (#0057FF blue), secondary (#8B5CF6 purple)
+- **Status** — error, warning, success, info
+- **Text** — primary, secondary, disabled, onBrand
+- **Background** — default (#F9FAFB), paper (#FFFFFF)
+- **Action** — hover, focus, selected, disabled overlays
+- **Neutral** — lighter → darker grayscale scale
+
+See **Foundations → Color** for the full palette.
+
+---
+
+## Typography system
+
+The type scale is based on the Inter font family with variants: `h4`, `h5`, `h6`, `subtitle1`, `subtitle2`, `body1`, `body2`, `caption`, `overline`, `button`.
+
+See **Foundations → Typography** for the full scale with sizes and weights.
+
+---
+
+## Spacing
+
+Based on a **4px grid**. Common multiples: 4, 8, 12, 16, 20, 24, 32, 40, 48px.
+
+Component padding, gaps, and margins always use multiples of 4px, defined as tokens.
+
+---
+
+## Working with the system
+
+- Reference **Foundations** pages for palette, type scale, spacing, elevation, and border values.
+- Use **Components** pages to understand what each component does and how it composes.
+- Use **Patterns** pages for guidance on common UI scenarios.
+
+</div>

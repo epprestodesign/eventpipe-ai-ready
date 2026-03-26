@@ -1,0 +1,16 @@
+{
+  "component": {
+    "divider": {
+      "color":        { "$type": "color",     "$value": "{semantic.color.divider}" },
+      "thickness":    { "$type": "dimension", "$value": "1px" },
+      "insetIndent":  { "$type": "dimension", "$value": "72px" },
+      "middleIndent": { "$type": "dimension", "$value": "16px" },
+
+      "text": {
+        "color":    { "$type": "color",     "$value": "{semantic.color.text.secondary}" },
+        "fontSize": { "$type": "dimension", "$value": "{semantic.typography.caption.fontSize}" },
+        "gap":      { "$type": "dimension", "$value": "8px" }
+      }
+    }
+  }
+}

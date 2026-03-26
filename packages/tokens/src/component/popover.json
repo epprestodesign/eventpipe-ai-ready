@@ -1,0 +1,18 @@
+{
+  "component": {
+    "popover": {
+      "background":   { "$type": "color",     "$value": "{semantic.color.background.paper}" },
+      "borderRadius": { "$type": "dimension", "$value": "{semantic.radius.lg}" },
+
+      "shadow": {
+        "$type": "shadow",
+        "$value": "{semantic.elevation.overlay}"
+      },
+
+      "padding": {
+        "y": { "$type": "dimension", "$value": "16px" },
+        "x": { "$type": "dimension", "$value": "16px" }
+      }
+    }
+  }
+}

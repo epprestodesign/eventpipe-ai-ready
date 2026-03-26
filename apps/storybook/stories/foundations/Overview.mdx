@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Overview" />
+
+<div style={{ maxWidth: 760, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Foundations
+
+Foundations are the visual and structural decisions that underpin every component in the EventPipe Design System. They are expressed as tokens — named values that travel through three layers from raw values to component-level defaults.
+
+---
+
+## Foundation areas
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, margin: '24px 0' }}>
+  {[
+    { title: 'Color', icon: '🎨', desc: 'Semantic palette: brand, status, text, background, action, and neutral scales.' },
+    { title: 'Typography', icon: '🔤', desc: 'Type scale, font weights, and line heights. Based on Inter.' },
+    { title: 'Iconography', icon: '✦', desc: 'EP icon system with 5 size variants and a typed icon registry.' },
+    { title: 'Spacing', icon: '⬛', desc: '4px base grid. All spacing values are multiples of 4px.' },
+    { title: 'Elevation', icon: '🪟', desc: 'Shadow levels used by overlays. Elevation-4 through elevation-24.' },
+    { title: 'Border & Radius', icon: '⬡', desc: 'Border colors and corner radius tokens for surfaces and controls.' },
+    { title: 'Tokens', icon: '🔑', desc: 'Three-layer token architecture: Primitive → Semantic → Component.' },
+    { title: 'Accessibility', icon: '♿', desc: 'WCAG 2.1 AA standards. Focus rings, contrast ratios, ARIA patterns.' },
+  ].map(f => (
+    <div key={f.title} style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 8, padding: '20px' }}>
+      <div style={{ fontSize: 24, marginBottom: 10 }}>{f.icon}</div>
+      <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 6, color: '#111827' }}>{f.title}</div>
+      <p style={{ margin: 0, fontSize: 13, color: '#4B5563', lineHeight: 1.5 }}>{f.desc}</p>
+    </div>
+  ))}
+</div>
+
+---
+
+## How foundations become tokens
+
+Foundations are not abstract guidelines — they are compiled into CSS custom properties and distributed via `@eventpipe/tokens`. Every component reads from the component-layer (`--ep-component-*`) which references semantic decisions (`--ep-semantic-*`) which ultimately resolve primitive values (`--ep-primitive-*`).
+
+```
+Design decision:  "The primary brand color is #0057FF"
+         ↓
+primitive.color.blue.600    →   #0057FF
+         ↓
+semantic.color.brand.primary    →   {primitive.color.blue.600}
+         ↓
+component.button.contained.primary.background   →   {semantic.color.brand.primary}
+         ↓
+CSS output:  --ep-component-button-contained-primary-background: #0057FF
+```
+
+Changing the primitive value propagates automatically to every component that references it.
+
+</div>

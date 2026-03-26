@@ -1,0 +1,47 @@
+{
+  "component": {
+    "dialog": {
+      "background":         { "$type": "color",    "$value": "{semantic.color.background.paper}" },
+      "borderRadius":       { "$type": "dimension", "$value": "{semantic.radius.xl}" },
+      "transitionDuration": { "$type": "duration",  "$value": "225ms" },
+
+      "shadow": {
+        "$type": "shadow",
+        "$value": "{semantic.elevation.modal}"
+      },
+
+      "title": {
+        "paddingY":   { "$type": "dimension",   "$value": "20px" },
+        "paddingX":   { "$type": "dimension",   "$value": "24px" },
+        "fontSize":   { "$type": "dimension",   "$value": "{semantic.typography.h6.fontSize}" },
+        "fontWeight": { "$type": "fontWeight",  "$value": "{semantic.typography.h6.fontWeight}" }
+      },
+
+      "content": {
+        "paddingY": { "$type": "dimension", "$value": "20px" },
+        "paddingX": { "$type": "dimension", "$value": "24px" }
+      },
+
+      "actions": {
+        "paddingY": { "$type": "dimension", "$value": "16px" },
+        "paddingX": { "$type": "dimension", "$value": "24px" },
+        "gap":      { "$type": "dimension", "$value": "8px" }
+      },
+
+      "divider": {
+        "color": { "$type": "color", "$value": "{semantic.color.divider}" }
+      },
+
+      "closeButton": {
+        "color":       { "$type": "color",     "$value": "{semantic.color.text.secondary}" },
+        "colorHover":  { "$type": "color",     "$value": "{semantic.color.text.primary}" },
+        "size":        { "$type": "dimension", "$value": "32px" },
+        "focusColor":  { "$type": "color",     "$value": "{semantic.color.focus.ring}" }
+      },
+
+      "loading": {
+        "background": { "$type": "color", "$value": "{semantic.color.action.focus}" }
+      }
+    }
+  }
+}

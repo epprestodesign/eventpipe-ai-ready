@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Tools/Overview" />
+
+<div style={{ maxWidth: 760, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Tools
+
+Reference pages for working on and maintaining the EventPipe design system.
+
+---
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, margin: '24px 0 40px' }}>
+  {[
+    {
+      title: 'Wave status',
+      desc: 'Build progress across all waves. Component counts, QA gate requirements, and what is planned next.',
+      tag: 'Status',
+    },
+    {
+      title: 'System readiness',
+      desc: 'Overall health of the system. Token coverage, architecture contracts, and known limitations.',
+      tag: 'Status',
+    },
+    {
+      title: 'Token audit',
+      desc: 'Token counts by layer and component. Validation pipeline explanation. How to audit coverage.',
+      tag: 'Tokens',
+    },
+    {
+      title: 'Deviations register',
+      desc: 'All intentional departures from the standard build workflow, with rationale and approval status.',
+      tag: 'Governance',
+    },
+    {
+      title: 'Contributing',
+      desc: 'Step-by-step guide for adding a new component: spec → tokens → implementation → stories → QA.',
+      tag: 'Guide',
+    },
+  ].map(p => (
+    <div key={p.title} style={{ background: '#fff', border: '1px solid #E5E7EB', borderRadius: 8, padding: '20px' }}>
+      <div style={{ fontSize: 11, fontWeight: 600, color: '#0057FF', background: '#EFF6FF', padding: '2px 8px', borderRadius: 10, display: 'inline-block', marginBottom: 10 }}>{p.tag}</div>
+      <div style={{ fontWeight: 700, fontSize: 15, color: '#111827', marginBottom: 6 }}>{p.title}</div>
+      <p style={{ margin: 0, fontSize: 13, color: '#4B5563', lineHeight: 1.5 }}>{p.desc}</p>
+    </div>
+  ))}
+</div>
+
+---
+
+## Who uses these pages?
+
+- **Contributors** adding new components use **Contributing** and **Wave status**
+- **Reviewers** checking compliance use **Deviations register** and **Token audit**
+- **Architects** assessing adoption readiness use **System readiness**
+
+</div>

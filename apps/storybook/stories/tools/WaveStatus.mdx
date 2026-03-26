@@ -1,0 +1,101 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Tools/Wave status" />
+
+<div style={{ maxWidth: 860, fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+
+# Wave status
+
+Build progress for the EventPipe design system component library.
+
+---
+
+## Build waves
+
+<table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+  <thead>
+    <tr style={{ borderBottom: '2px solid #E5E7EB' }}>
+      <th style={{ textAlign: 'left', padding: '8px 12px', color: '#6B7280' }}>Wave</th>
+      <th style={{ textAlign: 'left', padding: '8px 12px', color: '#6B7280' }}>Components</th>
+      <th style={{ textAlign: 'left', padding: '8px 12px', color: '#6B7280' }}>Status</th>
+      <th style={{ textAlign: 'left', padding: '8px 12px', color: '#6B7280' }}>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    {[
+      { wave: 'Wave 1',  components: 'Button, TextField, Select, Autocomplete, Alert, Snackbar, CircularProgress, LinearProgress, Skeleton, Backdrop, Dialog, Icon', status: 'done', notes: 'Foundation layer.' },
+      { wave: 'Wave 2A', components: 'Card, List, ListItem, Chip, Badge', status: 'done', notes: 'Surface + inline data components.' },
+      { wave: 'Wave 2B', components: 'Checkbox, Radio, RadioGroup, Switch, Menu, MenuItem', status: 'done', notes: 'Selection + contextual action components.' },
+      { wave: 'Wave 2C', components: 'Tabs, Breadcrumbs, Link', status: 'done', notes: 'Navigation layer complete.' },
+      { wave: 'Wave 2D', components: 'Drawer, Popover', status: 'done', notes: 'Final overlay layer. PAPER_SX pattern complete.' },
+      { wave: 'Wave 3A', components: 'Table, TableHead, TableBody, TableRow, TableCell, TableHeaderCell, TableToolbar', status: 'done', notes: 'DataTable primitives. Composable — no monolithic DataTable API.' },
+      { wave: 'Wave 3B', components: 'FilterBar, FilterChip, useDebounce', status: 'done', notes: 'MA-1 FilterChip composition, MA-2 debounce hook, MA-3 async Select pattern. Consumes patterns A–F.' },
+      { wave: 'Wave 3C', components: 'DatePicker, DateRangePicker', status: 'planned', notes: 'No upstream dependencies — can parallelize with 3B.' },
+      { wave: 'Wave 4A', components: 'TransferList', status: 'done', notes: 'Dual-list selection system. Patterns B (selection), C (header state), E (loading), F (empty). MA-2 debounce for search.' },
+      { wave: 'Wave 4B', components: 'Stepper', status: 'done', notes: 'Progression + navigation. Patterns A (active affordance), C (state-driven indicator). Horizontal + vertical, linear + non-linear.' },
+      { wave: 'Wave 4C', components: 'DatePicker', status: 'done', notes: 'Date selection via TextField + Popover calendar. No MUI DatePicker, no date library. Keyboard nav. 28 tokens.' },
+      { wave: 'Wave 5A', components: 'CommandPalette', status: 'done', notes: 'Keyboard command launcher. Flat + grouped commands, filter, loading (Pattern E), empty (Pattern F). Focus-on-input deviation. 23 tokens.' },
+      { wave: 'Wave 5B', components: 'DataGrid', status: 'done', notes: 'Composition of Table + FilterBar + Pagination + Checkbox + Menu. Sorting, selection, pagination, row actions, bulk toolbar (Pattern C), loading (Pattern E), empty (Pattern F). 10 tokens.' },
+      { wave: 'Wave 4',  components: 'Timeline, ConfirmDialog', status: 'planned', notes: 'Remaining workflow components.' },
+      { wave: 'Wave 5',  components: 'Dark mode pass, Mobile breakpoints', status: 'planned', notes: 'Advanced platform layer.' },
+    ].map((row) => (
+      <tr key={String(row.wave)} style={{ borderBottom: '1px solid #F3F4F6' }}>
+        <td style={{ padding: '10px 12px', fontWeight: 600, whiteSpace: 'nowrap' }}>{row.wave}</td>
+        <td style={{ padding: '10px 12px', color: '#374151' }}>{row.components}</td>
+        <td style={{ padding: '10px 12px' }}>
+          <span style={{
+            display: 'inline-block', padding: '2px 10px', borderRadius: 12,
+            fontSize: 12, fontWeight: 600,
+            background: row.status === 'done' ? '#D1FAE5' : '#F3F4F6',
+            color: row.status === 'done' ? '#065F46' : '#6B7280',
+          }}>
+            {row.status === 'done' ? '✓ Done' : '○ Planned'}
+          </span>
+        </td>
+        <td style={{ padding: '10px 12px', color: '#6B7280', fontSize: 13 }}>{row.notes}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+---
+
+## Component count by wave
+
+<div style={{ display: 'flex', gap: 16, margin: '24px 0', flexWrap: 'wrap' }}>
+  {[
+    { label: 'Wave 1',  count: 12, color: '#0057FF' },
+    { label: 'Wave 2A', count: 5,  color: '#0057FF' },
+    { label: 'Wave 2B', count: 6,  color: '#0057FF' },
+    { label: 'Wave 2C', count: 3,  color: '#0057FF' },
+    { label: 'Wave 2D', count: 2,  color: '#0057FF' },
+    { label: 'Wave 3A', count: 7,  color: '#0057FF' },
+    { label: 'Wave 3B', count: 3,  color: '#0057FF' },
+    { label: 'Wave 4A', count: 1,  color: '#0057FF' },
+    { label: 'Wave 4B', count: 1,  color: '#0057FF' },
+    { label: 'Wave 4C', count: 1,  color: '#0057FF' },
+    { label: 'Wave 5A', count: 1,  color: '#0057FF' },
+    { label: 'Wave 5B', count: 1,  color: '#0057FF' },
+    { label: 'Total shipped', count: 43, color: '#065F46' },
+  ].map(item => (
+    <div key={String(item.label)} style={{ background: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: 8, padding: '16px 20px', minWidth: 120, textAlign: 'center' }}>
+      <div style={{ fontSize: 28, fontWeight: 700, color: item.color }}>{item.count}</div>
+      <div style={{ fontSize: 12, color: '#6B7280', marginTop: 4 }}>{item.label}</div>
+    </div>
+  ))}
+</div>
+
+---
+
+## QA gate requirements
+
+| Gate | Command | Requirement |
+|---|---|---|
+| Token build | `pnpm --filter @eventpipe/tokens build` | 3/3 validators pass |
+| UI typecheck | `pnpm --filter @eventpipe/ui typecheck` | exit 0 |
+| UI build | `pnpm --filter @eventpipe/ui build` | ESM + CJS + DTS |
+| Storybook typecheck | `pnpm --filter storybook typecheck` | exit 0 |
+| Storybook build | `pnpm --filter storybook build` | static build succeeds |
+| Token tests | `pnpm --filter @eventpipe/tokens test` | 7/7 pass |
+
+</div>

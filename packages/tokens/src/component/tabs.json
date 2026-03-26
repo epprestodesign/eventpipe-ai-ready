@@ -1,0 +1,42 @@
+{
+  "component": {
+    "tabs": {
+      "borderBottom": {
+        "color": { "$type": "color",     "$value": "{semantic.color.divider}" },
+        "width": { "$type": "dimension", "$value": "1px" }
+      },
+
+      "tab": {
+        "color":         { "$type": "color", "$value": "{semantic.color.text.secondary}" },
+        "colorActive":   { "$type": "color", "$value": "{semantic.color.brand.primary}" },
+        "colorDisabled": { "$type": "color", "$value": "{semantic.color.text.disabled}" },
+
+        "backgroundHover": { "$type": "color", "$value": "{semantic.color.action.hover}" },
+        "backgroundFocus": { "$type": "color", "$value": "{semantic.color.action.focus}" },
+
+        "fontSize":       { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" },
+        "fontWeight":     { "$type": "number",    "$value": "500" },
+        "fontWeightActive": { "$type": "number",  "$value": "600" },
+
+        "padding": {
+          "y": { "$type": "dimension", "$value": "12px" },
+          "x": { "$type": "dimension", "$value": "16px" }
+        },
+
+        "minWidth": { "$type": "dimension", "$value": "90px" }
+      },
+
+      "indicator": {
+        "color":        { "$type": "color",     "$value": "{semantic.color.brand.primary}" },
+        "height":       { "$type": "dimension", "$value": "2px" },
+        "borderRadius": { "$type": "dimension", "$value": "{semantic.radius.xs}" }
+      },
+
+      "focusRing": {
+        "color":  { "$type": "color",     "$value": "{semantic.color.focus.ring}" },
+        "width":  { "$type": "dimension", "$value": "2px" },
+        "offset": { "$type": "dimension", "$value": "2px" }
+      }
+    }
+  }
+}

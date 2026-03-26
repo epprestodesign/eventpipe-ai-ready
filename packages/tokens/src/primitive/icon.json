@@ -1,0 +1,13 @@
+{
+  "primitive": {
+    "icon": {
+      "size": {
+        "12": { "$type": "dimension", "$value": "12px" },
+        "16": { "$type": "dimension", "$value": "16px" },
+        "20": { "$type": "dimension", "$value": "20px" },
+        "24": { "$type": "dimension", "$value": "24px" },
+        "32": { "$type": "dimension", "$value": "32px" }
+      }
+    }
+  }
+}

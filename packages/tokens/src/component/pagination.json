@@ -1,0 +1,52 @@
+{
+  "component": {
+    "pagination": {
+      "gap": { "$type": "dimension", "$value": "4px" },
+
+      "item": {
+        "borderRadius": {
+          "circular": { "$type": "dimension", "$value": "50%" },
+          "rounded":   { "$type": "dimension", "$value": "4px" }
+        },
+
+        "size": {
+          "sm": {
+            "width":    { "$type": "dimension", "$value": "28px" },
+            "height":   { "$type": "dimension", "$value": "28px" },
+            "fontSize": { "$type": "dimension", "$value": "{semantic.typography.caption.fontSize}" }
+          },
+          "md": {
+            "width":    { "$type": "dimension", "$value": "36px" },
+            "height":   { "$type": "dimension", "$value": "36px" },
+            "fontSize": { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" }
+          },
+          "lg": {
+            "width":    { "$type": "dimension", "$value": "44px" },
+            "height":   { "$type": "dimension", "$value": "44px" },
+            "fontSize": { "$type": "dimension", "$value": "{semantic.typography.body1.fontSize}" }
+          }
+        },
+
+        "color":              { "$type": "color", "$value": "{semantic.color.text.primary}" },
+        "colorSelected":      { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+        "colorDisabled":      { "$type": "color", "$value": "{semantic.color.text.disabled}" },
+
+        "background":         { "$type": "color", "$value": "transparent" },
+        "backgroundHover":    { "$type": "color", "$value": "{semantic.color.action.hover}" },
+        "backgroundFocus":    { "$type": "color", "$value": "{semantic.color.action.focus}" },
+        "backgroundSelected": { "$type": "color", "$value": "{semantic.color.brand.primary}" },
+        "backgroundDisabled": { "$type": "color", "$value": "transparent" },
+
+        "border":         { "$type": "color", "$value": "{semantic.color.border.default}" },
+        "borderSelected": { "$type": "color", "$value": "{semantic.color.brand.primary}" },
+        "borderDisabled": { "$type": "color", "$value": "{semantic.color.border.default}" },
+
+        "focusRing": {
+          "color":  { "$type": "color",     "$value": "{semantic.color.focus.ring}" },
+          "width":  { "$type": "dimension", "$value": "2px" },
+          "offset": { "$type": "dimension", "$value": "2px" }
+        }
+      }
+    }
+  }
+}

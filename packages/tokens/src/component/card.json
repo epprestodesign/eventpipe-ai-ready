@@ -1,0 +1,76 @@
+{
+  "component": {
+    "card": {
+      "borderRadius": { "$type": "dimension", "$value": "{semantic.radius.lg}" },
+      "borderWidth":  { "$type": "dimension", "$value": "1px" },
+
+      "background": {
+        "elevated": { "$type": "color", "$value": "{semantic.color.background.paper}" },
+        "outlined":  { "$type": "color", "$value": "{semantic.color.background.paper}" },
+        "filled":    { "$type": "color", "$value": "{semantic.color.background.default}" }
+      },
+
+      "border": {
+        "elevated": { "$type": "color", "$value": "transparent" },
+        "outlined":  { "$type": "color", "$value": "{semantic.color.border.default}" },
+        "filled":    { "$type": "color", "$value": "transparent" }
+      },
+
+      "shadow": {
+        "$type": "shadow",
+        "$value": [
+          { "offsetX": "0px", "offsetY": "1px", "blur": "3px",  "spread": "0px",  "color": "rgba(0,0,0,0.12)" },
+          { "offsetX": "0px", "offsetY": "1px", "blur": "2px",  "spread": "-1px", "color": "rgba(0,0,0,0.08)" }
+        ]
+      },
+
+      "shadowHover": {
+        "$type": "shadow",
+        "$value": [
+          { "offsetX": "0px", "offsetY": "4px", "blur": "8px",  "spread": "0px",  "color": "rgba(0,0,0,0.16)" },
+          { "offsetX": "0px", "offsetY": "2px", "blur": "4px",  "spread": "-1px", "color": "rgba(0,0,0,0.10)" }
+        ]
+      },
+
+      "hover": {
+        "background": { "$type": "color", "$value": "{semantic.color.action.hover}" }
+      },
+
+      "header": {
+        "titleColor":     { "$type": "color",     "$value": "{semantic.color.text.primary}" },
+        "subheaderColor": { "$type": "color",     "$value": "{semantic.color.text.secondary}" },
+        "padding": {
+          "y": { "$type": "dimension", "$value": "16px" },
+          "x": { "$type": "dimension", "$value": "16px" }
+        },
+        "gap": { "$type": "dimension", "$value": "12px" }
+      },
+
+      "content": {
+        "color": { "$type": "color", "$value": "{semantic.color.text.primary}" },
+        "padding": {
+          "y": { "$type": "dimension", "$value": "16px" },
+          "x": { "$type": "dimension", "$value": "16px" }
+        }
+      },
+
+      "footer": {
+        "padding": {
+          "y": { "$type": "dimension", "$value": "8px" },
+          "x": { "$type": "dimension", "$value": "8px" }
+        },
+        "gap": { "$type": "dimension", "$value": "8px" }
+      },
+
+      "divider": {
+        "color": { "$type": "color", "$value": "{semantic.color.divider}" }
+      },
+
+      "focusRing": {
+        "color":  { "$type": "color",     "$value": "{semantic.color.focus.ring}" },
+        "width":  { "$type": "dimension", "$value": "2px" },
+        "offset": { "$type": "dimension", "$value": "2px" }
+      }
+    }
+  }
+}

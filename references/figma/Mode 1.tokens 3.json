@@ -1,0 +1,29 @@
+{
+  "material-ui": {
+    "$type": "string",
+    "$value": "7.2.0",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:1599:12415",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string",
+      "com.figma.isOverride": true
+    }
+  },
+  "mui-x": {
+    "$type": "string",
+    "$value": "8.10.0",
+    "$extensions": {
+      "com.figma.variableId": "VariableID:13606:7421",
+      "com.figma.scopes": [
+        "ALL_SCOPES"
+      ],
+      "com.figma.type": "string",
+      "com.figma.isOverride": true
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Mode 1"
+  }
+}

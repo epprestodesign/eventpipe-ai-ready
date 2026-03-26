@@ -1,0 +1,203 @@
+{
+  "component": {
+    "chip": {
+      "borderRadius": { "$type": "dimension", "$value": "{semantic.radius.pill}" },
+
+      "size": {
+        "sm": {
+          "height":   { "$type": "dimension", "$value": "24px" },
+          "fontSize": { "$type": "dimension", "$value": "{semantic.typography.caption.fontSize}" },
+          "paddingX": { "$type": "dimension", "$value": "8px" },
+          "iconSize": { "$type": "dimension", "$value": "14px" },
+          "gap":      { "$type": "dimension", "$value": "4px" }
+        },
+        "md": {
+          "height":   { "$type": "dimension", "$value": "32px" },
+          "fontSize": { "$type": "dimension", "$value": "{semantic.typography.body2.fontSize}" },
+          "paddingX": { "$type": "dimension", "$value": "12px" },
+          "iconSize": { "$type": "dimension", "$value": "16px" },
+          "gap":      { "$type": "dimension", "$value": "6px" }
+        },
+        "lg": {
+          "height":   { "$type": "dimension", "$value": "40px" },
+          "fontSize": { "$type": "dimension", "$value": "{semantic.typography.body1.fontSize}" },
+          "paddingX": { "$type": "dimension", "$value": "16px" },
+          "iconSize": { "$type": "dimension", "$value": "18px" },
+          "gap":      { "$type": "dimension", "$value": "8px" }
+        }
+      },
+
+      "filled": {
+        "primary":   {
+          "background":         { "$type": "color", "$value": "{semantic.color.brand.primary}" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.brand.primaryDark}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.brand.primaryDark}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+          "border":             { "$type": "color", "$value": "transparent" }
+        },
+        "secondary": {
+          "background":         { "$type": "color", "$value": "{semantic.color.brand.secondary}" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.brand.secondaryDark}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.brand.secondaryDark}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+          "border":             { "$type": "color", "$value": "transparent" }
+        },
+        "error": {
+          "background":         { "$type": "color", "$value": "{semantic.color.status.error}" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.status.errorDark}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.status.errorDark}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+          "border":             { "$type": "color", "$value": "transparent" }
+        },
+        "warning": {
+          "background":         { "$type": "color", "$value": "{semantic.color.status.warning}" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.status.warningDark}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.status.warningDark}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+          "border":             { "$type": "color", "$value": "transparent" }
+        },
+        "info": {
+          "background":         { "$type": "color", "$value": "{semantic.color.status.info}" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.status.infoDark}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.status.infoDark}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+          "border":             { "$type": "color", "$value": "transparent" }
+        },
+        "success": {
+          "background":         { "$type": "color", "$value": "{semantic.color.status.success}" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.status.successDark}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.status.successDark}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+          "border":             { "$type": "color", "$value": "transparent" }
+        },
+        "neutral": {
+          "background":         { "$type": "color", "$value": "{semantic.color.neutral.default}" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.neutral.dark}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.neutral.dark}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.text.onBrand}" },
+          "border":             { "$type": "color", "$value": "transparent" }
+        }
+      },
+
+      "outlined": {
+        "primary": {
+          "background":         { "$type": "color", "$value": "transparent" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.action.hover}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.action.selected}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.brand.primary}" },
+          "border":             { "$type": "color", "$value": "{semantic.color.brand.primary}" }
+        },
+        "secondary": {
+          "background":         { "$type": "color", "$value": "transparent" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.action.hover}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.action.selected}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.brand.secondary}" },
+          "border":             { "$type": "color", "$value": "{semantic.color.brand.secondary}" }
+        },
+        "error": {
+          "background":         { "$type": "color", "$value": "transparent" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.status.errorBg}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.status.errorBg}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.status.error}" },
+          "border":             { "$type": "color", "$value": "{semantic.color.status.error}" }
+        },
+        "warning": {
+          "background":         { "$type": "color", "$value": "transparent" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.status.warningBg}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.status.warningBg}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.status.warning}" },
+          "border":             { "$type": "color", "$value": "{semantic.color.status.warning}" }
+        },
+        "info": {
+          "background":         { "$type": "color", "$value": "transparent" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.status.infoBg}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.status.infoBg}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.status.info}" },
+          "border":             { "$type": "color", "$value": "{semantic.color.status.info}" }
+        },
+        "success": {
+          "background":         { "$type": "color", "$value": "transparent" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.status.successBg}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.status.successBg}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.status.success}" },
+          "border":             { "$type": "color", "$value": "{semantic.color.status.success}" }
+        },
+        "neutral": {
+          "background":         { "$type": "color", "$value": "transparent" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.action.hover}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.action.selected}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.text.primary}" },
+          "border":             { "$type": "color", "$value": "{semantic.color.border.strong}" }
+        }
+      },
+
+      "soft": {
+        "primary": {
+          "background":         { "$type": "color", "$value": "{semantic.color.brand.primaryLight}" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.brand.primarySoft}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.brand.primarySoft}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.brand.primaryDark}" },
+          "border":             { "$type": "color", "$value": "transparent" }
+        },
+        "secondary": {
+          "background":         { "$type": "color", "$value": "{semantic.color.action.hover}" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.action.selected}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.action.selected}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.brand.secondary}" },
+          "border":             { "$type": "color", "$value": "transparent" }
+        },
+        "error": {
+          "background":         { "$type": "color", "$value": "{semantic.color.status.errorBg}" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.status.errorLight}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.status.errorLight}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.status.error}" },
+          "border":             { "$type": "color", "$value": "transparent" }
+        },
+        "warning": {
+          "background":         { "$type": "color", "$value": "{semantic.color.status.warningBg}" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.status.warningLight}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.status.warningLight}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.status.warning}" },
+          "border":             { "$type": "color", "$value": "transparent" }
+        },
+        "info": {
+          "background":         { "$type": "color", "$value": "{semantic.color.status.infoBg}" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.status.infoLight}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.status.infoLight}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.status.info}" },
+          "border":             { "$type": "color", "$value": "transparent" }
+        },
+        "success": {
+          "background":         { "$type": "color", "$value": "{semantic.color.status.successBg}" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.status.successLight}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.status.successLight}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.status.success}" },
+          "border":             { "$type": "color", "$value": "transparent" }
+        },
+        "neutral": {
+          "background":         { "$type": "color", "$value": "{semantic.color.neutral.light}" },
+          "backgroundHover":    { "$type": "color", "$value": "{semantic.color.neutral.lighter}" },
+          "backgroundSelected": { "$type": "color", "$value": "{semantic.color.neutral.lighter}" },
+          "text":               { "$type": "color", "$value": "{semantic.color.text.primary}" },
+          "border":             { "$type": "color", "$value": "transparent" }
+        }
+      },
+
+      "disabled": {
+        "background": { "$type": "color",  "$value": "{semantic.color.action.disabled}" },
+        "text":       { "$type": "color",  "$value": "{semantic.color.text.disabled}" },
+        "border":     { "$type": "color",  "$value": "{semantic.color.border.default}" }
+      },
+
+      "focusRing": {
+        "width":  { "$type": "dimension", "$value": "2px" },
+        "offset": { "$type": "dimension", "$value": "2px" }
+      },
+
+      "deleteIcon": {
+        "opacity":      { "$type": "number", "$value": 0.7 },
+        "opacityHover": { "$type": "number", "$value": 1 }
+      }
+    }
+  }
+}
